@@ -1,13 +1,11 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from './lib/prisma';
 import { env } from '@/env';
 
 import Twitter from 'next-auth/providers/twitter';
 import Github from 'next-auth/providers/github';
 import Google from 'next-auth/providers/google';
 import NextAuth from 'next-auth';
-
-const prisma = new PrismaClient();
 
 export const {
   auth,
