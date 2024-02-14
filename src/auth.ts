@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { prisma } from './lib/prisma';
+import { prisma } from '@/lib/prisma';
 import { env } from '@/env';
 
 import Twitter from 'next-auth/providers/twitter';
