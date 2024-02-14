@@ -38,13 +38,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String            @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?           @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Feedback      ProductFeedback[]
+  Comment       Comment[]
+  Reply         Reply[]
+  Upvote        Upvote[]
 }
 
 model VerificationToken {
@@ -53,4 +57,69 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model ProductFeedback {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  status      Status    @default(SUGGESTION)
+  upvotes     Int       @default(0)
+  comments    Comment[]
+  category    Category
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Upvote      Upvote[]
+}
+
+enum Status {
+  SUGGESTION
+  IN_PROGRESS
+  LIVE
+}
+
+enum Category {
+  UI
+  UX
+  ENHANCEMENT
+  BUG
+  FEATURE
+}
+
+model Comment {
+  id         String          @id @default(uuid())
+  content    String          @db.VarChar(250)
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  feedback   ProductFeedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+  feedbackId Int
+  replies    Reply[]         @relation("ReplyOnComment")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reply {
+  id        String   @id @default(uuid())
+  content   String   @db.VarChar(250)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  comment   Comment  @relation("ReplyOnComment", fields: [commentId], references: [id], onDelete: Cascade)
+  commentId String
+  repliedTo String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Upvote {
+  id         String          @id @default(uuid())
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  feedback   ProductFeedback @relation(fields: [feedbackId], references: [id], onDelete: Cascade)
+  feedbackId Int
+  createdAt  DateTime        @default(now())
+
+  @@unique([userId, feedbackId])
 }
