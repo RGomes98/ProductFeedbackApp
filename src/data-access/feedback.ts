@@ -1,9 +1,15 @@
 import type { CategoryFilter, OrderByFilter } from '@/helpers/queryAndSortProductFeedbacks';
+import type { FeedbackUpdate } from '@/lib/schemas/feedback-update-schema';
 import type { Feedback } from '@/lib/schemas/feedback-schema';
 import { prisma } from '@/lib/prisma';
 
 export const createFeedback = async (userId: string, feedback: Feedback) => {
   await prisma.productFeedback.create({ data: { userId, ...feedback } });
+};
+
+export const updateFeedback = async (userId: string, feedback: FeedbackUpdate) => {
+  const { feedbackId, ...dataToUpdate } = feedback;
+  await prisma.productFeedback.update({ where: { userId, id: feedbackId }, data: dataToUpdate });
 };
 
 export const incrementFeedbackUpvote = async (feedbackId: number) => {
