@@ -32,6 +32,6 @@ export const createFeedbackReplyAction = async (
     return resolveHTTPResponse('OK', 'reply successfully created', fields);
   } catch (error) {
     assertIsError(error);
-    return resolveHTTPResponse('NOT_FOUND', error.message, fields);
+    return resolveHTTPResponse('INTERNAL_SERVER_ERROR', error.message, fields);
   }
 };

@@ -13,7 +13,7 @@ import {
   resolveHTTPResponse,
 } from '@/utils/serverActionsResponses';
 
-export const createFeedbackUpvoteAction = async (
+export const updateFeedbackUpvoteAction = async (
   formState: FormState,
   formData: FormData
 ): Promise<FormState> => {
@@ -32,6 +32,6 @@ export const createFeedbackUpvoteAction = async (
     return resolveHTTPResponse('OK', 'upvote successfully updated', fields);
   } catch (error) {
     assertIsError(error);
-    return resolveHTTPResponse('NOT_FOUND', error.message, fields);
+    return resolveHTTPResponse('INTERNAL_SERVER_ERROR', error.message, fields);
   }
 };
