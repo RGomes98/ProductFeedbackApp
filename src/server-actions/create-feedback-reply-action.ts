@@ -2,10 +2,11 @@
 
 import { feedbackReplySchema } from '@/lib/schemas/feedback-reply-schema';
 import { FormState } from '@/hooks/useServerActionFormState';
-import { auth } from '@/auth';
-
 import { getFeedbackComment } from '@/data-access/comment';
 import { createFeedbackReply } from '@/data-access/reply';
+import { assertIsError } from '@/utils/assertIsError';
+import { auth } from '@/auth';
+
 import {
   authenticationErrorResponse,
   invalidFieldsErrorResponse,
@@ -30,6 +31,7 @@ export const createFeedbackReplyAction = async (
 
     return resolveHTTPResponse('OK', 'reply successfully created', fields);
   } catch (error) {
-    return resolveHTTPResponse('NOT_FOUND', 'feedback comment not found', fields);
+    assertIsError(error);
+    return resolveHTTPResponse('NOT_FOUND', error.message, fields);
   }
 };

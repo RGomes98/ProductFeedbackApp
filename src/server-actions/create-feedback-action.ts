@@ -3,6 +3,7 @@
 import type { FormState } from '@/hooks/useServerActionFormState';
 import { createFeedback } from '@/data-access/product-feedback';
 import { feedbackSchema } from '@/lib/schemas/feedback-schema';
+import { assertIsError } from '@/utils/assertIsError';
 import { auth } from '@/auth';
 
 import {
@@ -20,7 +21,11 @@ export const createFeedbackAction = async (formState: FormState, formData: FormD
 
   if (!feedback.success) return invalidFieldsErrorResponse(formData, feedback.error, fields);
 
-  await createFeedback(userId, feedback.data);
-
-  return resolveHTTPResponse('OK', 'feedback successfully created', fields);
+  try {
+    await createFeedback(userId, feedback.data);
+    return resolveHTTPResponse('OK', 'feedback successfully created', fields);
+  } catch (error) {
+    assertIsError(error);
+    return resolveHTTPResponse('INTERNAL_SERVER_ERROR', error.message, fields);
+  }
 };

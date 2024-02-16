@@ -4,6 +4,7 @@ import { feedbackCommentSchema } from '@/lib/schemas/feedback-comment-schema';
 import type { FormState } from '@/hooks/useServerActionFormState';
 import { createFeedbackComment } from '@/data-access/comment';
 import { getFeedback } from '@/data-access/product-feedback';
+import { assertIsError } from '@/utils/assertIsError';
 import { auth } from '@/auth';
 
 import {
@@ -30,6 +31,7 @@ export const createFeedbackCommentAction = async (
 
     return resolveHTTPResponse('OK', 'comment successfully created', fields);
   } catch (error) {
-    return resolveHTTPResponse('NOT_FOUND', 'feedback not found', fields);
+    assertIsError(error);
+    return resolveHTTPResponse('NOT_FOUND', error.message, fields);
   }
 };

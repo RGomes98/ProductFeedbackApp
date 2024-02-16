@@ -3,6 +3,7 @@
 import { feedbackUpvoteSchema } from '@/lib/schemas/feedback-upvote-schema';
 import { FormState } from '@/hooks/useServerActionFormState';
 import { getFeedback } from '@/data-access/product-feedback';
+import { assertIsError } from '@/utils/assertIsError';
 import { updateUpvote } from '@/data-access/upvote';
 import { auth } from '@/auth';
 
@@ -30,6 +31,7 @@ export const createFeedbackUpvoteAction = async (
 
     return resolveHTTPResponse('OK', 'upvote successfully updated', fields);
   } catch (error) {
-    return resolveHTTPResponse('NOT_FOUND', 'product feedback not found', fields);
+    assertIsError(error);
+    return resolveHTTPResponse('NOT_FOUND', error.message, fields);
   }
 };
