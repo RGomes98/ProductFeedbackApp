@@ -3,8 +3,8 @@
 import { feedbackCommentSchema } from '@/lib/schemas/feedback-comment-schema';
 import type { FormState } from '@/hooks/useServerActionFormState';
 import { createFeedbackComment } from '@/data-access/comment';
-import { getFeedback } from '@/data-access/product-feedback';
 import { assertIsError } from '@/utils/assertIsError';
+import { getFeedback } from '@/data-access/feedback';
 import { auth } from '@/auth';
 
 import {

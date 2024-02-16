@@ -1,8 +1,8 @@
 'use server';
 
 import type { FormState } from '@/hooks/useServerActionFormState';
-import { createFeedback } from '@/data-access/product-feedback';
 import { feedbackSchema } from '@/lib/schemas/feedback-schema';
+import { createFeedback } from '@/data-access/feedback';
 import { assertIsError } from '@/utils/assertIsError';
 import { auth } from '@/auth';
 

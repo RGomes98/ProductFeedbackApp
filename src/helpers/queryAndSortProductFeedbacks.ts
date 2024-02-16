@@ -1,4 +1,4 @@
-import { filterFeedback } from '@/data-access/product-feedback';
+import { filterFeedback } from '@/data-access/feedback';
 
 const filterOption = ['ALL', 'UI', 'UX', 'ENHANCEMENT', 'BUG', 'FEATURE'] as const;
 const orderByOptions = ['upvotes', 'comments'] as const;

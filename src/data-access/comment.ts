@@ -7,6 +7,6 @@ export const createFeedbackComment = async (userId: string, feedbackComment: Fee
 
 export const getFeedbackComment = async (feedbackCommentId: string) => {
   const comment = await prisma.comment.findFirst({ where: { id: feedbackCommentId } });
-  if (!comment) throw new Error('feedback comment not found');
+  if (!comment) throw new Error('comment not found');
   return comment;
 };

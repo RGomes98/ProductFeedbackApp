@@ -2,9 +2,9 @@
 
 import { feedbackUpvoteSchema } from '@/lib/schemas/feedback-upvote-schema';
 import { FormState } from '@/hooks/useServerActionFormState';
-import { getFeedback } from '@/data-access/product-feedback';
+import { updateFeedbackUpvote } from '@/data-access/upvote';
 import { assertIsError } from '@/utils/assertIsError';
-import { updateUpvote } from '@/data-access/upvote';
+import { getFeedback } from '@/data-access/feedback';
 import { auth } from '@/auth';
 
 import {
@@ -27,7 +27,7 @@ export const createFeedbackUpvoteAction = async (
 
   try {
     const feedback = await getFeedback(feedbackUpvote.data.feedbackId);
-    await updateUpvote(userId, feedback.id);
+    await updateFeedbackUpvote(userId, feedback.id);
 
     return resolveHTTPResponse('OK', 'upvote successfully updated', fields);
   } catch (error) {
