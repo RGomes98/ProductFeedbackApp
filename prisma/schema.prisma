@@ -3,11 +3,40 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
+}
+
+enum Status {
+  SUGGESTION
+  IN_PROGRESS
+  LIVE
+}
+
+enum Category {
+  UI
+  UX
+  ENHANCEMENT
+  BUG
+  FEATURE
+}
+
+model ProductFeedback {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  status      Status    @default(SUGGESTION)
+  upvotes     Int       @default(0)
+  comments    Comment[]
+  category    Category
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Upvote      Upvote[]
 }
 
 model Account {
@@ -57,35 +86,6 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-}
-
-model ProductFeedback {
-  id          Int       @id @default(autoincrement())
-  title       String
-  description String
-  status      Status    @default(SUGGESTION)
-  upvotes     Int       @default(0)
-  comments    Comment[]
-  category    Category
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  Upvote      Upvote[]
-}
-
-enum Status {
-  SUGGESTION
-  IN_PROGRESS
-  LIVE
-}
-
-enum Category {
-  UI
-  UX
-  ENHANCEMENT
-  BUG
-  FEATURE
 }
 
 model Comment {
