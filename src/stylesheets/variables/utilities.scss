@@ -1,0 +1,15 @@
+@use 'colors' as clr;
+
+//Transitions
+$ease200ms: ease 200ms;
+
+//Gradients
+$radial-gradient: radial-gradient(
+  farthest-corner circle at 50% 50% in hsl,
+  clr.$blush 0%,
+  clr.$veronica 50%,
+  clr.$picton-blue 100%
+);
+
+//Box Shadows
+$box-shadow: 0rem 0.625rem 2.5rem -0.438rem clr.$transparent-delft-blue-35;

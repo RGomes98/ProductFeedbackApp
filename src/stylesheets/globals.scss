@@ -1,0 +1,9 @@
+@use 'variables' as var;
+@use 'mixins' as mix;
+@use 'reset';
+
+body {
+  color: var.$glaucous;
+  @include mix.BodyFontRegular;
+  background-color: var.$antiflash-white;
+}

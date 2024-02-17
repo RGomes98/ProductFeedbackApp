@@ -1,0 +1,249 @@
+@use 'variables' as var;
+
+//Typography
+@mixin H1 {
+  font-weight: var.$bold;
+  font-size: var.$font-24;
+  line-height: var.$line-height-35;
+  letter-spacing: var.$letter-spacing-minus-0-33;
+}
+
+@mixin H2 {
+  font-weight: var.$bold;
+  font-size: var.$font-20;
+  line-height: var.$line-height-29;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+@mixin H3 {
+  font-weight: var.$bold;
+  font-size: var.$font-18;
+  line-height: var.$line-height-26;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+@mixin H4 {
+  font-weight: var.$bold;
+  font-size: var.$font-14;
+  line-height: var.$line-height-20;
+  letter-spacing: var.$letter-spacing-minus-0-20;
+}
+
+@mixin BodyFontRegular {
+  font-size: var.$font-16;
+  font-weight: var.$regular;
+  line-height: var.$line-height-23;
+}
+
+@mixin BodyFontSmall {
+  font-size: var.$font-15;
+  font-weight: var.$regular;
+  line-height: var.$line-height-22;
+}
+
+@mixin BodyFontExtraSmall {
+  font-size: var.$font-13;
+  font-weight: var.$semi-bold;
+  line-height: var.$line-height-19;
+}
+
+//Elements
+@mixin DefaultButton($color) {
+  display: flex;
+  width: 9.875rem;
+  height: 2.75rem;
+  cursor: pointer;
+  color: var.$white;
+  border: transparent;
+  align-items: center;
+  font-weight: var.$bold;
+  border-radius: 0.625rem;
+  font-size: var.$font-14;
+  justify-content: center;
+  transition: background-color var.$ease200ms;
+
+  @if $color == purple {
+    background-color: var.$veronica;
+    &:hover {
+      background-color: var.$phlox;
+    }
+  }
+
+  @if $color == blue {
+    background-color: var.$savoy-blue;
+    &:hover {
+      background-color: var.$cornflower-blue;
+    }
+  }
+
+  @if $color == darkblue {
+    background-color: var.$marian-blue;
+    &:hover {
+      background-color: var.$ultra-violet;
+    }
+  }
+
+  @if $color == red {
+    background-color: var.$poppy;
+    &:hover {
+      background-color: var.$light-coral;
+    }
+  }
+}
+
+@mixin BackButton($style) {
+  gap: 1rem;
+  display: flex;
+  width: 9.875rem;
+  cursor: pointer;
+  height: 3.313rem;
+  border: transparent;
+  align-items: center;
+  font-weight: var.$bold;
+  border-radius: 0.625rem;
+  font-size: var.$font-14;
+  justify-content: center;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var.$ease200ms;
+
+  @if $style == solid {
+    color: var.$white;
+    background-color: var.$delft-blue;
+    &:hover {
+      text-decoration-color: var.$white;
+    }
+  }
+
+  @if $style == transparent {
+    color: var.$glaucous;
+    background-color: transparent;
+    &:hover {
+      text-decoration-color: var.$delft-blue;
+    }
+  }
+}
+
+@mixin UpvoteButton {
+  gap: 0.35rem;
+  display: flex;
+  width: 2.5rem;
+  cursor: pointer;
+  border: transparent;
+  align-items: center;
+  font-weight: var.$bold;
+  flex-direction: column;
+  justify-content: center;
+  font-size: var.$font-13;
+  border-radius: 0.625rem;
+  padding-block: 0.875rem 0.5rem;
+  background-color: var.$lavender;
+  letter-spacing: var.$letter-spacing-minus-0-18;
+  transition: background-color var.$ease200ms, color var.$ease200ms;
+
+  &[data-upvote='true'] {
+    color: var.$white;
+    background-color: var.$savoy-blue;
+  }
+
+  &:hover {
+    color: var.$marian-blue;
+    background-color: var.$periwinkle;
+  }
+}
+
+@mixin CategoryButton {
+  width: 3rem;
+  display: flex;
+  cursor: pointer;
+  height: 1.875rem;
+  border: transparent;
+  align-items: center;
+  color: var.$savoy-blue;
+  justify-content: center;
+  font-size: var.$font-13;
+  border-radius: 0.625rem;
+  font-weight: var.$semi-bold;
+  background-color: var.$ghost-white;
+  transition: background-color var.$ease200ms, color var.$ease200ms;
+
+  &:hover {
+    background-color: var.$periwinkle;
+  }
+
+  &:focus {
+    color: var.$white;
+    background-color: var.$savoy-blue;
+  }
+}
+
+@mixin DropdownButton {
+  gap: 0.563rem;
+  display: flex;
+  height: 4.5rem;
+  cursor: pointer;
+  width: 12.125rem;
+  color: var.$white;
+  border: transparent;
+  align-items: center;
+  border-radius: 0.625rem;
+  padding-block: 1.625rem;
+  justify-content: center;
+  font-size: var.$font-14;
+  font-weight: var.$semi-bold;
+  background-color: var.$delft-blue;
+  transition: background-color var.$ease200ms, color var.$ease200ms;
+
+  &:focus {
+    color: var.$transparent-lavender-75;
+  }
+}
+
+@mixin DropdownMenu {
+  list-style: none;
+  width: 15.938rem;
+  font-size: var.$font-16;
+  border-radius: 0.625rem;
+  font-weight: var.$regular;
+  box-shadow: var.$box-shadow;
+  background-color: var.$white;
+
+  li {
+    cursor: pointer;
+    padding-left: 1.5rem;
+    color: var.$glaucous;
+    padding-block: 0.75rem;
+    transition: color var.$ease200ms;
+
+    &:hover {
+      color: var.$veronica;
+    }
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid var.$transparent-marian-blue-15;
+  }
+}
+
+@mixin TextInput {
+  height: 3rem;
+  outline: none;
+  width: 15.938rem;
+  padding-left: 1.5rem;
+  border-radius: 0.313rem;
+  color: var.$marian-blue;
+  font-size: var.$font-15;
+  font-weight: var.$regular;
+  caret-color: var.$marian-blue;
+  border: 1px solid transparent;
+  background-color: var.$antiflash-white;
+  transition: border-color var.$ease200ms;
+
+  &[data-error='true'] {
+    border-color: var.$poppy;
+  }
+
+  &:focus {
+    border-color: var.$savoy-blue;
+  }
+}
