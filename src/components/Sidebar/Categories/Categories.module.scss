@@ -1,0 +1,31 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem 0.5rem;
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+  border-radius: 0.625rem;
+  background-color: var.$white;
+}
+
+.category {
+  @include mix.CategoryButton;
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  color: inherit;
+  align-items: center;
+  padding-inline: 1rem;
+  text-decoration: none;
+}
+
+@media (width <= var.$breakpoint-1000) {
+  .container {
+    padding-block: 1.5rem 2.25rem;
+  }
+}

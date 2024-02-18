@@ -1,0 +1,84 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1.5rem;
+  border-radius: 0.625rem;
+  background-color: var.$white;
+  padding-block: 1.188rem 1.5rem;
+}
+
+.headingWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading {
+  @include mix.H3;
+  line-height: initial;
+  color: var.$marian-blue;
+}
+
+.link {
+  color: var.$savoy-blue;
+  font-size: var.$font-13;
+  font-weight: var.$semi-bold;
+  transition: color var.$ease200ms;
+
+  &:hover {
+    color: var.$vista-blue;
+  }
+}
+
+.statusList {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+
+  & > :nth-child(1) .statusColor {
+    background-color: var.$atomic-tangerine;
+  }
+
+  & > :nth-child(2) .statusColor {
+    background-color: var.$veronica;
+  }
+
+  & > :nth-child(3) .statusColor {
+    background-color: var.$maya-blue;
+  }
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+}
+
+.statusWrapper {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.statusColor {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.status {
+}
+
+.count {
+  margin-left: auto;
+  font-weight: var.$bold;
+}
+
+@media (width <= var.$breakpoint-1000) {
+  .statusList {
+    gap: 0.5rem;
+  }
+}

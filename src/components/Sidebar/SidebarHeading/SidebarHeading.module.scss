@@ -1,0 +1,61 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  width: 100%;
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 0.625rem;
+  padding-inline: 1.5rem 0;
+  background-size: 100% 100%;
+  padding-block: 3.875rem 1.5rem;
+  background-image: url('/assets/backgrounds/background-header-desktop.png');
+}
+
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  color: var.$white;
+  font-weight: var.$bold;
+  font-size: var.$font-20;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+.subHeading {
+  font-size: var.$font-15;
+  font-weight: var.$medium;
+  color: var.$transparent-white-75;
+}
+
+@media (width <= var.$breakpoint-1000) {
+  .container {
+    justify-content: flex-end;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    gap: initial;
+    padding-block: 1rem;
+    flex-direction: row;
+    align-items: center;
+    border-radius: initial;
+    padding-inline: 1.5rem;
+    margin-inline: -1.5rem;
+    width: calc(100% + 3rem);
+    justify-content: space-between;
+  }
+
+  .heading {
+    font-size: var.$font-15;
+  }
+
+  .subHeading {
+    font-size: var.$font-13;
+  }
+}

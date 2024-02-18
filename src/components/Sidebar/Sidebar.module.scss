@@ -1,0 +1,33 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  z-index: 25;
+  width: 100%;
+  gap: 1.5rem;
+  display: flex;
+  max-width: 15.938rem;
+  flex-direction: column;
+}
+
+@media (width <= var.$breakpoint-1000) {
+  .container {
+    display: grid;
+    gap: 0.625rem;
+    max-width: 100%;
+    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    top: 0;
+    display: flex;
+    position: sticky;
+  }
+
+  .container > :is(:nth-child(2), :nth-child(3)) {
+    display: none;
+  }
+}

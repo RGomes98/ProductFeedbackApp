@@ -1,0 +1,53 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  &[data-mobile='true'] {
+    .mobileMenu {
+      transform: translateX(0);
+    }
+  }
+}
+
+.button {
+  display: flex;
+  cursor: pointer;
+  border: transparent;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.mobileMenu {
+  right: 0;
+  gap: 1.5rem;
+  z-index: 20;
+  width: 100%;
+  display: flex;
+  top: 4.875rem;
+  height: 100vh;
+  position: fixed;
+  max-width: 16.938rem;
+  padding-block: 1.5rem;
+  flex-direction: column;
+  padding-inline: 1.5rem;
+  transform: translateX(100%);
+  transition: transform var.$ease200ms;
+  background-color: var.$antiflash-white;
+}
+
+.overlay {
+  inset: 0;
+  z-index: 5;
+  top: 4.875rem;
+  position: fixed;
+  background-color: var.$transparent-black-50;
+}
+
+@include mix.FadeInAnimation(overlay, var.$ease200ms);
+
+@media (width >= var.$breakpoint-762) {
+  .container {
+    display: none;
+  }
+}
