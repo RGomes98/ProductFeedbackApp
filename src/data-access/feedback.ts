@@ -23,9 +23,13 @@ export const decrementFeedbackUpvote = async (feedbackId: number) => {
 export const filterFeedback = async (orderByFilter: OrderByFilter, categoryFilter: CategoryFilter) => {
   return await prisma.productFeedback.findMany({
     orderBy: orderByFilter,
-    where: { category: categoryFilter },
     include: { _count: { select: { comments: true } } },
+    where: { category: categoryFilter, status: 'SUGGESTION' },
   });
+};
+
+export const getFeedbackStatusesCount = async () => {
+  return await prisma.productFeedback.groupBy({ by: ['status'], _count: { status: true } });
 };
 
 export const getFeedback = async (feedbackId: number) => {
