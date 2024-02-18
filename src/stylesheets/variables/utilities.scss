@@ -3,13 +3,21 @@
 //Transitions
 $ease200ms: ease 200ms;
 
-//Gradients
-$radial-gradient: radial-gradient(
-  farthest-corner circle at 50% 50% in hsl,
-  clr.$blush 0%,
-  clr.$veronica 50%,
-  clr.$picton-blue 100%
-);
+//Media Queries Breakpoints
+$breakpoint-1600: 1600px;
+$breakpoint-1245: 1245px;
+$breakpoint-1000: 1000px;
+$breakpoint-762: 762px;
+
+//Paddings
+$padding-24: 1.5rem;
+$padding-40: 2.5rem;
+$padding-56: 3.5rem;
+$padding-94: 5.875rem;
+$padding-113: 7.063rem;
+$padding-129: 8.06rem;
+$padding-165: 10.313rem;
+$padding-285: 17.813rem;
 
 //Box Shadows
 $box-shadow: 0rem 0.625rem 2.5rem -0.438rem clr.$transparent-delft-blue-35;

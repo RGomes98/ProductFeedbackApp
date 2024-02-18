@@ -7,3 +7,23 @@ body {
   @include mix.BodyFontRegular;
   background-color: var.$antiflash-white;
 }
+
+main {
+  gap: 1.875rem;
+  display: flex;
+}
+
+@include mix.BodyPadding;
+
+@media (width <= var.$breakpoint-1000) {
+  main {
+    flex-direction: column;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  main {
+    gap: initial;
+    display: flex;
+  }
+}

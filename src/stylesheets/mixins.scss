@@ -64,6 +64,7 @@
 
   @if $color == purple {
     background-color: var.$veronica;
+
     &:hover {
       background-color: var.$phlox;
     }
@@ -71,6 +72,7 @@
 
   @if $color == blue {
     background-color: var.$savoy-blue;
+
     &:hover {
       background-color: var.$cornflower-blue;
     }
@@ -78,6 +80,7 @@
 
   @if $color == darkblue {
     background-color: var.$marian-blue;
+
     &:hover {
       background-color: var.$ultra-violet;
     }
@@ -85,6 +88,7 @@
 
   @if $color == red {
     background-color: var.$poppy;
+
     &:hover {
       background-color: var.$light-coral;
     }
@@ -110,6 +114,7 @@
   @if $style == solid {
     color: var.$white;
     background-color: var.$delft-blue;
+
     &:hover {
       text-decoration-color: var.$white;
     }
@@ -118,6 +123,7 @@
   @if $style == transparent {
     color: var.$glaucous;
     background-color: transparent;
+
     &:hover {
       text-decoration-color: var.$delft-blue;
     }
@@ -153,16 +159,17 @@
 }
 
 @mixin CategoryButton {
-  width: 3rem;
   display: flex;
   cursor: pointer;
   height: 1.875rem;
+  width: fit-content;
   border: transparent;
   align-items: center;
   color: var.$savoy-blue;
   justify-content: center;
   font-size: var.$font-13;
   border-radius: 0.625rem;
+  text-transform: capitalize;
   font-weight: var.$semi-bold;
   background-color: var.$ghost-white;
   transition: background-color var.$ease200ms, color var.$ease200ms;
@@ -171,7 +178,7 @@
     background-color: var.$periwinkle;
   }
 
-  &:focus {
+  &[data-category='true'] {
     color: var.$white;
     background-color: var.$savoy-blue;
   }
@@ -183,18 +190,18 @@
   height: 4.5rem;
   cursor: pointer;
   width: 12.125rem;
-  color: var.$white;
   border: transparent;
   align-items: center;
+  color: var.$lavender;
   border-radius: 0.625rem;
   padding-block: 1.625rem;
   justify-content: center;
   font-size: var.$font-14;
-  font-weight: var.$semi-bold;
+  font-weight: var.$regular;
   background-color: var.$delft-blue;
   transition: background-color var.$ease200ms, color var.$ease200ms;
 
-  &:focus {
+  &:hover {
     color: var.$transparent-lavender-75;
   }
 }
@@ -210,9 +217,7 @@
 
   li {
     cursor: pointer;
-    padding-left: 1.5rem;
     color: var.$glaucous;
-    padding-block: 0.75rem;
     transition: color var.$ease200ms;
 
     &:hover {
@@ -245,5 +250,49 @@
 
   &:focus {
     border-color: var.$savoy-blue;
+  }
+}
+
+//Animations
+@mixin FadeInAnimation($container, $animationSettings) {
+  .#{$container} {
+    animation: fadeIn $animationSettings;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+//Container Paddings
+@mixin BodyPadding() {
+  body {
+    padding-inline: var.$padding-285;
+    padding-block: var.$padding-94 var.$padding-129;
+  }
+
+  @media (width <= var.$breakpoint-1600) {
+    body {
+      padding-inline: var.$padding-165;
+    }
+  }
+
+  @media (width <= var.$breakpoint-1245) {
+    body {
+      padding-inline: var.$padding-40;
+      padding-block: var.$padding-56 var.$padding-113;
+    }
+  }
+
+  @media (width <= var.$breakpoint-762) {
+    body {
+      padding-inline: var.$padding-24;
+      padding-block: 0 var.$padding-56;
+    }
   }
 }
