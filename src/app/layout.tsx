@@ -6,7 +6,7 @@ import '@/stylesheets/globals.scss';
 const jost = Jost({
   display: 'swap',
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   fallback: ['system-ui', 'sans-serif'],
 });
 
