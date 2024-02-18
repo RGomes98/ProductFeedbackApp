@@ -10,33 +10,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum Status {
-  SUGGESTION
-  IN_PROGRESS
-  LIVE
-}
-
-enum Category {
-  UI
-  UX
-  ENHANCEMENT
-  BUG
-  FEATURE
-}
-
-model ProductFeedback {
-  id          Int       @id @default(autoincrement())
-  title       String
-  description String
-  status      Status    @default(SUGGESTION)
-  upvotes     Int       @default(0)
-  comments    Comment[]
-  category    Category
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  Upvote      Upvote[]
+model User {
+  id            String            @id @default(cuid())
+  name          String?
+  email         String?           @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  Feedback      ProductFeedback[]
+  Comment       Comment[]
+  Reply         Reply[]
+  Upvote        Upvote[]
 }
 
 model Account {
@@ -66,26 +51,42 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model User {
-  id            String            @id @default(cuid())
-  name          String?
-  email         String?           @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  Feedback      ProductFeedback[]
-  Comment       Comment[]
-  Reply         Reply[]
-  Upvote        Upvote[]
-}
-
 model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum Status {
+  SUGGESTION
+  IN_PROGRESS
+  PLANNED
+  LIVE
+}
+
+enum Category {
+  UI
+  UX
+  ENHANCEMENT
+  BUG
+  FEATURE
+}
+
+model ProductFeedback {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  status      Status    @default(SUGGESTION)
+  upvotes     Int       @default(0)
+  comments    Comment[]
+  category    Category
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Upvote      Upvote[]
 }
 
 model Comment {
