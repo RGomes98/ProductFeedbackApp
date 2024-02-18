@@ -6,6 +6,7 @@ export const envSchema = z.object({
   POSTGRES_PASSWORD: z.coerce.string(),
   POSTGRES_DATABASE: z.coerce.string(),
   POSTGRES_URL: z.coerce.string().url(),
+  POSTGRES_PRISMA_URL_LOCAL: z.coerce.string().url(),
   POSTGRES_PRISMA_URL: z.coerce.string().url(),
   POSTGRES_URL_NO_SSL: z.coerce.string().url(),
   POSTGRES_URL_NON_POOLING: z.coerce.string().url(),
