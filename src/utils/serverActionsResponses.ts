@@ -1,5 +1,5 @@
 import { parseZodFieldErrors } from '@/helpers/parseZodFieldErrors ';
-import { parseFieldValues } from '@/helpers/parseFieldValues';
+import { parseFieldValues } from '@/utils/parseFieldValues';
 import type { ZodError } from 'zod';
 
 import HttpStatusCode from '@/utils/HttpStatusCodeEnum';
