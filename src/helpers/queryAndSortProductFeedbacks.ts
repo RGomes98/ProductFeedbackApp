@@ -6,6 +6,7 @@ const orderOptions = ['asc', 'desc'] as const;
 
 export type OrderByFilter = { upvotes: 'asc' | 'desc' } | { comments: { _count: 'asc' | 'desc' } };
 export type CategoryFilter = Exclude<SearchParamsFilter['filter'], 'ALL'> | undefined;
+export type FilteredFeedbacks = Awaited<ReturnType<typeof filterFeedback>>[number];
 
 export type SearchParamsFilter = {
   filter: (typeof filterOption)[number];
