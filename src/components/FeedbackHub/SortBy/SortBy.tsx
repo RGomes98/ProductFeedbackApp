@@ -1,7 +1,7 @@
 'use client';
 
+import { ArrowDownIcon } from '@/components/Icons/ArrowDownIcon';
 import { createQueryString } from '@/helpers/createQueryString';
-import { ArrowUpIcon } from '@/components/Icons/ArrowUpIcon';
 import { CheckIcon } from '@/components/Icons/CheckIcon';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -9,11 +9,13 @@ import { useState } from 'react';
 import styles from './SortBy.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowDownIcon } from '@/components/Icons/ArrowDownIcon';
 
 export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
   const [isSortByMenuActive, setIsSortByMenuActive] = useState(false);
   const searchParams = useSearchParams();
+
+  const orderByText = searchParams.get('orderBy') === 'upvotes' ? 'Upvotes' : 'Comments';
+  const orderText = searchParams.get('order') === 'desc' ? 'Most' : 'Least';
 
   const querySorts = [
     [
@@ -51,7 +53,8 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
           <span className={styles.sortBy}>
             Sort by :
             <span className={styles.sortByVariant}>
-              Most upvotes <ArrowDownIcon className={styles.arrowIcon} data-open={isSortByMenuActive} />
+              {orderText} {orderByText}
+              <ArrowDownIcon className={styles.arrowIcon} data-open={isSortByMenuActive} />
             </span>
           </span>
           {isSortByMenuActive && (
