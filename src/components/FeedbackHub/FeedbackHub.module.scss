@@ -1,0 +1,29 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  width: 100%;
+  gap: 1.5rem;
+  display: flex;
+  max-width: 51.563rem;
+  flex-direction: column;
+}
+
+.feedbackContainer {
+  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width <= var.$breakpoint-1000) {
+  .container {
+    gap: 2rem;
+    max-width: 100%;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .feedbackContainer {
+    gap: 1rem;
+  }
+}

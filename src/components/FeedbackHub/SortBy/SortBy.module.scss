@@ -1,0 +1,120 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  display: flex;
+  align-items: center;
+  border-radius: 0.625rem;
+  padding-inline: 1.5rem 1rem;
+  background-color: var.$delft-blue;
+}
+
+.filterWrapper {
+  gap: 2.375rem;
+  display: flex;
+  align-items: center;
+}
+
+.suggestionsWrapper {
+  gap: 1rem;
+  display: flex;
+  @include mix.H3;
+  color: var.$white;
+  align-content: center;
+}
+
+.suggestionsIcon {
+}
+
+.suggestionsCount {
+}
+
+.dropdownButton {
+  position: relative;
+  @include mix.DropdownButton;
+}
+
+.sortBy {
+  gap: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.sortByVariant {
+  gap: 0.563rem;
+  display: flex;
+  align-items: center;
+  font-weight: var.$bold;
+}
+
+.arrowIcon {
+  transition: rotate var.$ease200ms;
+
+  path {
+    stroke: var.$white;
+  }
+
+  &[data-open='true'] {
+    rotate: 180deg;
+  }
+}
+
+.addFeedback {
+  margin-left: auto;
+  text-decoration: none;
+  @include mix.DefaultButton(purple);
+}
+
+.sortByMenu {
+  left: 1rem;
+  top: 5.5rem;
+  position: absolute;
+  @include mix.DropdownMenu;
+}
+
+@include mix.FadeInAnimation(sortByMenu, var.$ease200ms);
+
+.link {
+  width: 100%;
+  display: flex;
+  color: inherit;
+  align-items: center;
+  text-decoration: none;
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+  justify-content: space-between;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    top: 4.875rem;
+    position: sticky;
+    border-radius: initial;
+    padding-inline: 1.5rem;
+    margin-inline: -1.5rem;
+    width: calc(100% + 3rem);
+  }
+
+  .sortBy {
+    font-size: var.$font-13;
+    justify-content: flex-start;
+  }
+
+  .sortByMenu {
+    left: 0;
+  }
+
+  .dropdownButton {
+    width: fit-content;
+    justify-content: flex-start;
+  }
+
+  .addFeedback {
+    max-width: 8.375rem;
+    font-size: var.$font-13;
+  }
+
+  .suggestionsWrapper {
+    display: none;
+  }
+}

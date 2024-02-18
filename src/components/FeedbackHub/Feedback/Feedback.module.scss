@@ -1,0 +1,69 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 2.5rem;
+  width: 100%;
+  display: flex;
+  color: inherit;
+  cursor: pointer;
+  padding-inline: 2rem;
+  text-decoration: none;
+  padding-block: 1.75rem;
+  border-radius: 0.625rem;
+  background-color: var.$white;
+
+  &:hover {
+    .title {
+      color: var.$savoy-blue;
+    }
+  }
+}
+
+@include mix.FadeInAnimation(container, var.$ease200ms);
+
+.wrapper {
+  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentWrapper {
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include mix.H3;
+  line-height: unset;
+  color: var.$marian-blue;
+  transition: color var.$ease200ms;
+}
+
+.description {
+}
+
+.category {
+  padding-inline: 1rem;
+  @include mix.CategoryButton;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  .wrapper {
+    order: -1;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .contentWrapper {
+    gap: 0.625rem;
+  }
+}

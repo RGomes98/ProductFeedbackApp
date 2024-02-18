@@ -1,0 +1,23 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 0.5rem;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+
+.icon {
+}
+
+.count {
+  font-weight: var.$bold;
+  color: var.$marian-blue;
+  font-size: var.$font-16;
+  letter-spacing: var.$letter-spacing-minus-0-22;
+
+  &[data-empty='true'] {
+    color: var.$transparent-marian-blue-50;
+  }
+}
