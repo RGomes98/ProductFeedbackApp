@@ -133,8 +133,8 @@
 @mixin UpvoteButton {
   gap: 0.35rem;
   display: flex;
-  width: 2.5rem;
   cursor: pointer;
+  min-width: 2.5rem;
   border: transparent;
   align-items: center;
   font-weight: var.$bold;
