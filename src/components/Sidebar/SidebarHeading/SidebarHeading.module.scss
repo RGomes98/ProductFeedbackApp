@@ -35,6 +35,7 @@
 @media (width <= var.$breakpoint-1000) {
   .container {
     justify-content: flex-end;
+    background-image: url('/assets/backgrounds/background-header-tablet.png');
   }
 }
 
@@ -49,6 +50,7 @@
     margin-inline: -1.5rem;
     width: calc(100% + 3rem);
     justify-content: space-between;
+    background-image: url('/assets/backgrounds/background-header-mobile.png');
   }
 
   .heading {
