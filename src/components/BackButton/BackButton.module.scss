@@ -1,0 +1,25 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.button {
+  gap: 1rem;
+  display: flex;
+  cursor: pointer;
+  border: transparent;
+  align-items: center;
+  color: var.$glaucous;
+  align-self: flex-start;
+  font-weight: var.$bold;
+  font-size: var.$font-14;
+  text-decoration: underline;
+  background-color: transparent;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var.$ease200ms;
+
+  &:hover {
+    text-decoration-color: var.$glaucous;
+  }
+}
+
+.icon {
+}
