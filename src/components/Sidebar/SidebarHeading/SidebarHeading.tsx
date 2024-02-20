@@ -1,3 +1,4 @@
+import { SignInButton } from '../SignInButton/SignInButton';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { Categories } from '../Categories/Categories';
 import { Statuses } from '../Statuses/Statuses';
@@ -14,6 +15,7 @@ export const SidebarHeading = () => {
       <MobileMenu>
         <Categories />
         <Statuses />
+        <SignInButton />
       </MobileMenu>
     </div>
   );

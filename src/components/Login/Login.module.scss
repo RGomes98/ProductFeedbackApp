@@ -1,0 +1,113 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 4.688rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wrapper {
+  gap: 1rem;
+  display: flex;
+  max-width: 26rem;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  padding-inline: 2.625rem;
+  background-color: var.$white;
+  padding-block: 3.25rem 3.5rem;
+}
+
+.headingWrapper {
+  gap: 1rem;
+  display: flex;
+  margin-bottom: 3rem;
+  flex-direction: column;
+}
+
+.heading {
+  @include mix.H1;
+  color: var.$marian-blue;
+}
+
+.text {
+  font-size: var.$font-14;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  max-width: 20rem;
+  justify-content: center;
+}
+
+.button {
+  width: 100%;
+  gap: 0.5rem;
+  display: flex;
+  cursor: pointer;
+  color: var.$white;
+  border: transparent;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding-block: 0.875rem;
+  justify-content: center;
+  font-weight: var.$medium;
+  transition: background-color var.$ease200ms;
+}
+
+.form:nth-of-type(1) .button {
+  color: var.$gunmetal;
+  box-shadow: var.$box-shadow;
+  background-color: var.$white;
+
+  &:hover {
+    background-color: var.$seasalt;
+  }
+}
+
+.form:nth-of-type(2) .button {
+  background-color: var.$gunmetal;
+
+  .icon {
+    fill: var.$white;
+  }
+
+  &:hover {
+    background-color: lighten(var.$gunmetal, 20%);
+  }
+}
+
+.form:nth-of-type(3) .button {
+  background-color: var.$night;
+
+  .icon {
+    fill: var.$white;
+  }
+
+  &:hover {
+    background-color: lighten(var.$gunmetal, 5%);
+  }
+}
+
+.icon {
+  width: 1.5rem;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    gap: 10rem;
+    padding-block: 2rem;
+  }
+
+  .wrapper {
+    padding-inline: 1.5rem;
+  }
+
+  .form {
+    max-width: initial;
+  }
+}

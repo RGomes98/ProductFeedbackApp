@@ -1,0 +1,16 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.signIn {
+  @include mix.DefaultButton(darkblue);
+  width: 100%;
+  text-decoration: none;
+}
+
+.signOut {
+}
+
+.button {
+  @include mix.DefaultButton(darkblue);
+  width: 100%;
+}

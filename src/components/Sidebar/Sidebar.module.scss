@@ -5,8 +5,11 @@
   z-index: 25;
   width: 100%;
   gap: 1.5rem;
+  top: 1.5rem;
   display: flex;
+  position: sticky;
   max-width: 15.938rem;
+  align-self: flex-start;
   flex-direction: column;
 }
 
@@ -15,6 +18,7 @@
     display: grid;
     gap: 0.625rem;
     max-width: 100%;
+    position: unset;
     flex-direction: row;
     grid-template-columns: repeat(3, 1fr);
   }
@@ -27,7 +31,8 @@
     position: sticky;
   }
 
-  .container > :is(:nth-child(2), :nth-child(3)) {
+  .container > :is(:nth-child(2), :nth-child(3)),
+  .signInWrapper {
     display: none;
   }
 }
