@@ -3,14 +3,14 @@
 
 .signIn {
   @include mix.DefaultButton(darkblue);
-  width: 100%;
   text-decoration: none;
+  width: 100%;
 }
 
 .signOut {
+  @include mix.DefaultButton(red);
+  width: 100%;
 }
 
-.button {
-  @include mix.DefaultButton(darkblue);
-  width: 100%;
+.wrapper {
 }
