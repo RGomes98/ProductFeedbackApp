@@ -1,6 +1,6 @@
-import { SignInButton } from '../SignInButton/SignInButton';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { Categories } from '../Categories/Categories';
+import { Navbar } from '@/components/Navbar/Navabar';
 import { Statuses } from '../Statuses/Statuses';
 
 import styles from './SidebarHeading.module.scss';
@@ -15,7 +15,7 @@ export const SidebarHeading = () => {
       <MobileMenu>
         <Categories />
         <Statuses />
-        <SignInButton />
+        <Navbar />
       </MobileMenu>
     </div>
   );

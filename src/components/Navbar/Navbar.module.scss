@@ -1,0 +1,57 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+@use 'sass:string';
+
+.container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  padding-block: 0.5rem;
+  background-color: var.$white;
+  justify-content: space-between;
+}
+
+@include mix.ContainerStandardPadding(string.unquote('.container'), inline);
+
+.sessionWrapper {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.profilePicture {
+  border-radius: 50%;
+}
+
+.message {
+}
+
+.buttonWrapper {
+  width: 100%;
+  margin-left: auto;
+  max-width: 9.875rem;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    gap: 1rem;
+    margin-top: auto;
+    position: initial;
+    padding-block: initial;
+    flex-direction: column;
+    padding-inline: initial;
+    background-color: transparent;
+  }
+
+  .sessionWrapper {
+    gap: 0.5rem;
+  }
+
+  .buttonWrapper {
+    max-width: initial;
+  }
+}

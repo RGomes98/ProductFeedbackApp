@@ -1,6 +1,8 @@
 import type { SearchParamsFilter } from '@/helpers/queryAndSortProductFeedbacks';
 import { FeedbackHub } from '@/components/FeedbackHub/FeedbackHub';
 import { Sidebar } from '@/components/Sidebar/Sidebar';
+import { Navbar } from '@/components/Navbar/Navabar';
+import { Fragment } from 'react';
 
 export default async function Home({
   searchParams: { order, filter, orderBy },
@@ -8,9 +10,14 @@ export default async function Home({
   searchParams: SearchParamsFilter;
 }) {
   return (
-    <main>
-      <Sidebar />
-      <FeedbackHub {...{ order, filter, orderBy }} />
-    </main>
+    <Fragment>
+      <nav>
+        <Navbar />
+      </nav>
+      <main>
+        <Sidebar />
+        <FeedbackHub {...{ order, filter, orderBy }} />
+      </main>
+    </Fragment>
   );
 }
