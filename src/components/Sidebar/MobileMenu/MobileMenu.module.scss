@@ -31,7 +31,7 @@
   flex-direction: column;
   padding-inline: 1.5rem;
   transform: translateX(100%);
-  height: calc(100vh - 4.875rem);
+  height: calc(100% - 4.875rem);
   transition: transform var.$ease200ms;
   background-color: var.$antiflash-white;
 }
