@@ -147,14 +147,18 @@
   letter-spacing: var.$letter-spacing-minus-0-18;
   transition: background-color var.$ease200ms, color var.$ease200ms;
 
-  &[data-upvote='true'] {
-    color: var.$white;
-    background-color: var.$savoy-blue;
-  }
-
   &:hover {
     color: var.$marian-blue;
     background-color: var.$periwinkle;
+  }
+
+  &[data-upvote='true'] {
+    color: var.$white;
+    background-color: var.$savoy-blue;
+
+    svg path {
+      stroke: var.$white;
+    }
   }
 }
 

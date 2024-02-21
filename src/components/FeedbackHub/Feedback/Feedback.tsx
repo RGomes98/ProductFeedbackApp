@@ -5,11 +5,23 @@ import { Comments } from '../Comments/Comments';
 
 import styles from './Feedback.module.scss';
 import Link from 'next/link';
+import { auth } from '@/auth';
 
-export const Feedback = ({ id, upvotes, title, description, category, _count }: FilteredFeedbacks) => {
+export const Feedback = async ({
+  id,
+  upvotes,
+  title,
+  description,
+  category,
+  _count,
+  Upvote,
+}: FilteredFeedbacks) => {
+  const sessionId = (await auth())?.user?.id;
+  const isUpvotedByUser = Upvote.some(({ userId }) => userId === sessionId);
+
   return (
     <Link href='#' className={styles.container}>
-      <UpvoteButton {...{ id, upvotes }} />
+      <UpvoteButton {...{ id, upvotes, isUpvotedByUser }} />
       <div className={styles.wrapper}>
         <div className={styles.contentWrapper}>
           <span className={styles.title}>{title}</span>

@@ -3,7 +3,11 @@
 
 .container {
   align-self: flex-start;
+}
+
+.button {
   @include mix.UpvoteButton;
+  color: inherit;
 }
 
 .count {

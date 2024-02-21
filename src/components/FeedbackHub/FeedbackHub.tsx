@@ -1,10 +1,10 @@
 import { queryAndSortProductFeedbacks } from '@/helpers/queryAndSortProductFeedbacks';
 import type { SearchParamsFilter } from '@/helpers/queryAndSortProductFeedbacks';
+import { EmptyFeedbacks } from './EmptyFeedbacks/EmptyFeedbacks';
 import { Feedback } from './Feedback/Feedback';
 import { SortBy } from './SortBy/SortBy';
 
 import styles from './FeedbackHub.module.scss';
-import { EmptyFeedbacks } from './EmptyFeedbacks/EmptyFeedbacks';
 
 export const FeedbackHub = async ({ order, filter, orderBy }: SearchParamsFilter) => {
   const feedbacks = await queryAndSortProductFeedbacks({ order, filter, orderBy });
