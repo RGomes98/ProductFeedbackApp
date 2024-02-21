@@ -13,7 +13,8 @@ main {
   display: flex;
 }
 
-@include mix.BodyPadding;
+@include mix.ContainerStandardPadding(body, block);
+@include mix.ContainerStandardPadding(body, inline);
 
 @media (width <= var.$breakpoint-1000) {
   main {
@@ -25,5 +26,9 @@ main {
   main {
     gap: initial;
     display: flex;
+  }
+
+  nav {
+    display: none;
   }
 }

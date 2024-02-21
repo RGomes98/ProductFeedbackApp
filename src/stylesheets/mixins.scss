@@ -270,29 +270,46 @@
 }
 
 //Container Paddings
-@mixin BodyPadding() {
-  body {
-    padding-inline: var.$padding-285;
-    padding-block: var.$padding-94 var.$padding-129;
+@mixin ContainerStandardPadding($container, $position) {
+  @if $position == inline {
+    #{$container} {
+      padding-inline: var.$padding-285;
+    }
   }
 
   @media (width <= var.$breakpoint-1600) {
-    body {
+    #{$container} {
       padding-inline: var.$padding-165;
     }
   }
 
   @media (width <= var.$breakpoint-1245) {
-    body {
+    #{$container} {
       padding-inline: var.$padding-40;
-      padding-block: var.$padding-56 var.$padding-113;
     }
   }
 
   @media (width <= var.$breakpoint-762) {
-    body {
+    #{$container} {
       padding-inline: var.$padding-24;
-      padding-block: 0 var.$padding-56;
+    }
+  }
+
+  @if $position == block {
+    #{$container} {
+      padding-block: var.$padding-154 var.$padding-129;
+    }
+
+    @media (width <= var.$breakpoint-1245) {
+      #{$container} {
+        padding-block: var.$padding-116 var.$padding-113;
+      }
+    }
+
+    @media (width <= var.$breakpoint-762) {
+      #{$container} {
+        padding-block: 0 var.$padding-56;
+      }
     }
   }
 }
