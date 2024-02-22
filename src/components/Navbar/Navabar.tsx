@@ -1,4 +1,4 @@
-import { SessionButton } from '../Sidebar/SessionButton/SessionButton';
+import { SessionButton } from './SessionButton/SessionButton';
 import { auth } from '@/auth';
 
 import styles from './Navbar.module.scss';
