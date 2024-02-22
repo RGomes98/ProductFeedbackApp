@@ -2,12 +2,49 @@
 @use '@/stylesheets/mixins' as mix;
 
 .container {
+  @include mix.UpvoteButton;
   align-self: flex-start;
+  position: relative;
+  overflow: hidden;
 }
 
 .button {
-  @include mix.UpvoteButton;
-  color: inherit;
+  inset: 0;
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  border: transparent;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+
+  &[data-loading='true'] {
+    animation: UpvoteSkeleton var.$ms800 linear infinite alternate;
+  }
+}
+
+@keyframes UpvoteSkeleton {
+  0% {
+    background-color: var.$savoy-blue;
+  }
+  100% {
+    background-color: var.$cornflower-blue;
+  }
+}
+
+.spinner {
+  opacity: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  transition: opacity var.$ease500ms;
+
+  path {
+    fill: var.$white;
+  }
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
 }
 
 .count {
@@ -17,7 +54,7 @@
 }
 
 @media (width <= var.$breakpoint-762) {
-  .button {
+  .container {
     gap: 0.625rem;
     width: initial;
     flex-direction: row;

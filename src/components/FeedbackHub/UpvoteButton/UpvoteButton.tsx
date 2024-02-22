@@ -2,8 +2,10 @@
 
 import { updateFeedbackUpvoteAction } from '@/server-actions/update-feedback-upvote-action';
 import { useServerActionFormState } from '@/hooks/useServerActionFormState';
+import { LoadingSpinnerIcon } from '@/components/Icons/LoadingSpinnerIcon';
 import { ArrowUpIcon } from '@/components/Icons/ArrowUpIcon';
 import type { ProductFeedback } from '@prisma/client';
+import { useFormStatus } from 'react-dom';
 
 import styles from './UpvoteButton.module.scss';
 
@@ -18,17 +20,26 @@ export const UpvoteButton = ({
   });
 
   return (
-    <form className={styles.container} ref={formRef} action={formAction}>
-      <button
-        onClick={(event) => event.stopPropagation()}
-        data-upvote={isUpvotedByUser}
-        className={styles.button}
-        type='submit'
-      >
-        <ArrowUpIcon className={styles.icon} />
-        <span className={styles.count}>{upvotes}</span>
-        <input hidden readOnly value={id} name='feedbackId' type='text' />
-      </button>
+    <form className={styles.container} data-upvote={isUpvotedByUser} ref={formRef} action={formAction}>
+      <ArrowUpIcon className={styles.icon} />
+      <span className={styles.count}>{upvotes}</span>
+      <input hidden readOnly value={id} name='feedbackId' type='text' />
+      <SubmitButton />
     </form>
+  );
+};
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type='submit'
+      data-loading={pending}
+      className={styles.button}
+      onClick={(event) => event.stopPropagation()}
+    >
+      <LoadingSpinnerIcon className={styles.spinner} data-loading={pending} />
+    </button>
   );
 };
