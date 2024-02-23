@@ -87,6 +87,7 @@
 
 @media (width <= var.$breakpoint-762) {
   .container {
+    z-index: 100;
     top: 4.875rem;
     position: sticky;
     border-radius: initial;
