@@ -37,11 +37,21 @@
 .title {
   @include mix.H3;
   line-height: unset;
+  -webkit-line-clamp: 1;
   color: var.$marian-blue;
   transition: color var.$ease200ms;
 }
 
 .description {
+  -webkit-line-clamp: 2;
+}
+
+.title,
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
 }
 
 .category {
