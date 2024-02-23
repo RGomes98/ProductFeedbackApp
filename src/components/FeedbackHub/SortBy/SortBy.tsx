@@ -2,7 +2,6 @@
 
 import { ArrowDownIcon } from '@/components/Icons/ArrowDownIcon';
 import { createQueryString } from '@/helpers/createQueryString';
-import { CheckIcon } from '@/components/Icons/CheckIcon';
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
@@ -14,8 +13,11 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
   const [isSortByMenuActive, setIsSortByMenuActive] = useState(false);
   const searchParams = useSearchParams();
 
-  const orderByText = searchParams.get('orderBy') === 'upvotes' ? 'Upvotes' : 'Comments';
-  const orderText = searchParams.get('order') === 'desc' ? 'Most' : 'Least';
+  const orderByParam = searchParams.get('orderBy');
+  const orderParam = searchParams.get('order');
+
+  const orderByText = orderByParam === 'upvotes' || !orderByParam ? 'Upvotes' : 'Comments';
+  const orderText = orderParam === 'desc' || !orderParam ? 'Most' : 'Least';
 
   const querySorts = [
     [
@@ -64,8 +66,8 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
 
                 const orderByText = orderBy.value === 'upvotes' ? 'Upvotes' : 'Comments';
                 const orderText = order.value === 'desc' ? 'Most' : 'Least';
-                const selectedOrderBy = searchParams.get('orderBy') === orderBy.value;
-                const selectedOrder = searchParams.get('order') === order.value;
+                const selectedOrderBy = (searchParams.get('orderBy') || 'upvotes') === orderBy.value;
+                const selectedOrder = (searchParams.get('order') || 'desc') === order.value;
 
                 return (
                   <li key={index}>
@@ -75,7 +77,6 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
                       href={`?${createQueryString({ queries: sort, searchParams })}`}
                     >
                       {`${orderText} ${orderByText}`}
-                      {selectedOrderBy && selectedOrder && <CheckIcon />}
                     </Link>
                   </li>
                 );

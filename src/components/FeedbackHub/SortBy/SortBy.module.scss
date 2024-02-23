@@ -83,6 +83,12 @@
   padding-block: 0.75rem;
   padding-inline: 1.5rem;
   justify-content: space-between;
+
+  &[data-order='true'] {
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-image: url('/assets/icons/icon-check.svg');
+  }
 }
 
 @media (width <= var.$breakpoint-762) {
