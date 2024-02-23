@@ -14,9 +14,16 @@ export const Categories = () => {
   return (
     <div className={styles.container}>
       {queryFilters.map((filter) => {
+        const filterParam = searchParams.get('filter');
         const queries = [{ key: 'filter', value: filter }];
+        const noFilterParam = (!filterParam || !queryFilters.includes(filterParam)) && filter === 'ALL';
+
         return (
-          <li className={styles.category} data-category={searchParams.get('filter') === filter} key={filter}>
+          <li
+            data-category={filterParam === filter || noFilterParam}
+            className={styles.category}
+            key={filter}
+          >
             <Link className={styles.link} href={`?${createQueryString({ queries, searchParams })}`}>
               {formatCategoryName(filter)}
             </Link>
