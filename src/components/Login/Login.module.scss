@@ -2,7 +2,7 @@
 @use '@/stylesheets/mixins' as mix;
 
 .container {
-  gap: 4.688rem;
+  gap: 4.25rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -99,8 +99,7 @@
 
 @media (width <= var.$breakpoint-762) {
   .container {
-    gap: 10rem;
-    padding-block: 2rem;
+    margin-inline: 2rem;
   }
 
   .wrapper {

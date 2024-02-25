@@ -3,18 +3,21 @@
 @use 'reset';
 
 body {
+  display: flex;
   color: var.$glaucous;
+  justify-content: center;
   @include mix.BodyFontRegular;
   background-color: var.$antiflash-white;
 }
 
 main {
+  width: 100%;
   gap: 1.875rem;
   display: flex;
 }
 
-@include mix.ContainerStandardPadding(body, block);
-@include mix.ContainerStandardPadding(body, inline);
+@include mix.ContainerStandardPadding(main, block);
+@include mix.ContainerStandardPadding(main, inline);
 
 @media (width <= var.$breakpoint-1000) {
   main {

@@ -279,29 +279,29 @@
     #{$container} {
       padding-inline: var.$padding-285;
     }
-  }
 
-  @media (width <= var.$breakpoint-1600) {
-    #{$container} {
-      padding-inline: var.$padding-165;
+    @media (width <= var.$breakpoint-1600) {
+      #{$container} {
+        padding-inline: var.$padding-165;
+      }
     }
-  }
 
-  @media (width <= var.$breakpoint-1245) {
-    #{$container} {
-      padding-inline: var.$padding-40;
+    @media (width <= var.$breakpoint-1245) {
+      #{$container} {
+        padding-inline: var.$padding-40;
+      }
     }
-  }
 
-  @media (width <= var.$breakpoint-762) {
-    #{$container} {
-      padding-inline: var.$padding-24;
+    @media (width <= var.$breakpoint-762) {
+      #{$container} {
+        padding-inline: var.$padding-24;
+      }
     }
   }
 
   @if $position == block {
     #{$container} {
-      padding-block: var.$padding-154 var.$padding-129;
+      padding-block: var.$padding-94 var.$padding-129;
     }
 
     @media (width <= var.$breakpoint-1245) {
