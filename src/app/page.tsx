@@ -4,7 +4,7 @@ import { Sidebar } from '@/components/Sidebar/Sidebar';
 import { Navbar } from '@/components/Navbar/Navabar';
 import { Fragment } from 'react';
 
-export default async function Home({
+export default function Home({
   searchParams: { order, filter, orderBy },
 }: {
   searchParams: SearchParamsFilter;
