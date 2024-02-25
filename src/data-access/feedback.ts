@@ -4,7 +4,8 @@ import type { Feedback } from '@/lib/schemas/feedback-schema';
 import { prisma } from '@/lib/prisma';
 
 export const createFeedback = async (userId: string, feedback: Feedback) => {
-  await prisma.productFeedback.create({ data: { userId, ...feedback } });
+  const { path, ...dataToCreate } = feedback;
+  await prisma.productFeedback.create({ data: { userId, ...dataToCreate } });
 };
 
 export const updateFeedback = async (userId: string, feedback: FeedbackUpdate) => {

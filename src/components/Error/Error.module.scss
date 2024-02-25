@@ -1,0 +1,17 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.error {
+  color: var.$poppy;
+  margin-top: 0.25rem;
+  font-size: var.$font-14;
+  font-weight: var.$regular;
+}
+
+@include mix.FadeInAnimation(error, var.$ease200ms);
+
+@media (width <= var.$breakpoint-762) {
+  .error {
+    font-size: var.$font-13;
+  }
+}

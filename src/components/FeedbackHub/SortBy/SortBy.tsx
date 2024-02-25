@@ -85,7 +85,7 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
           )}
         </button>
       </div>
-      <Link className={styles.addFeedback} href='#'>
+      <Link className={styles.addFeedback} href='/create'>
         + Add Feedback
       </Link>
     </div>

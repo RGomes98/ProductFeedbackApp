@@ -20,7 +20,7 @@ export const EmptyFeedbacks = () => {
           Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve
           our app.
         </p>
-        <Link className={styles.addFeedback} href='#'>
+        <Link className={styles.addFeedback} href='/create'>
           + Add Feedback
         </Link>
       </div>

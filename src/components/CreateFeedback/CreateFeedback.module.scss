@@ -1,0 +1,236 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  width: 100%;
+  gap: 4.25rem;
+  display: flex;
+  max-width: 33.75rem;
+  margin-inline: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  gap: 2.5rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  padding-inline: 2.625rem;
+  background-color: var.$white;
+  padding-block: 3.25rem 2.5rem;
+}
+
+.form::before {
+  content: '';
+  width: 3.5rem;
+  top: -1.75rem;
+  height: 3.5rem;
+  position: absolute;
+  background-size: cover;
+  background-image: url('/assets/icons/icon-new-feedback.svg');
+}
+
+.heading {
+  font-weight: var.$bold;
+  font-size: var.$font-24;
+  color: var.$marian-blue;
+  letter-spacing: var.$letter-spacing-minus-0-33;
+}
+
+.formList {
+  gap: 1.5rem;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.formItem:last-of-type {
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.labelWrapper {
+  gap: 0.125rem;
+  display: flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+}
+
+.labelHeading {
+  font-weight: var.$bold;
+  font-size: var.$font-14;
+  color: var.$marian-blue;
+  letter-spacing: var.$letter-spacing-minus-0-18;
+}
+
+.labelText {
+  color: var.$glaucous;
+  font-size: var.$font-14;
+  font-weight: var.$regular;
+}
+
+.input {
+  @include mix.TextInput;
+  width: 100%;
+}
+
+.dropdownButton {
+  @include mix.TextInput;
+  justify-content: space-between;
+  padding-inline: 1.5rem;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+
+  &[data-dropdown='true'] .icon {
+    rotate: 180deg;
+  }
+}
+
+.icon {
+  transition: rotate var.$ease200ms;
+}
+
+.dropdownMenu {
+  @include mix.DropdownMenu;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+  top: 4rem;
+  left: 0;
+}
+
+@include mix.FadeInAnimation(dropdownMenu, var.$ease200ms);
+
+.dropdownItem {
+  display: flex;
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+
+  &[data-selected='true'] {
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-image: url('/assets/icons/icon-check.svg');
+  }
+}
+
+.textArea {
+  @include mix.TextInput;
+  padding-inline: 1.5rem;
+  word-wrap: break-word;
+  padding-block: 1rem;
+  resize: none;
+  height: 6rem;
+  width: 100%;
+}
+
+.button {
+  padding-inline: 1.5rem;
+}
+
+.buttonText {
+  opacity: 1;
+
+  &[data-loading='true'] {
+    opacity: 0;
+  }
+}
+
+.spinner {
+  opacity: 0;
+  position: absolute;
+
+  path {
+    fill: var.$white;
+  }
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
+}
+
+.buttonText,
+.spinner {
+  transition: opacity var.$ease200ms;
+}
+
+.button:nth-of-type(1) {
+  @include mix.DefaultButton(darkblue);
+}
+
+.button:nth-of-type(2) {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  @include mix.DefaultButton(purple);
+
+  &[data-loading='true'] {
+    pointer-events: none;
+  }
+}
+
+.button:nth-of-type(1),
+.button:nth-of-type(2) {
+  width: fit-content;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    gap: 3.438rem;
+  }
+
+  .form {
+    gap: 1.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 2.75rem 1.5rem;
+  }
+
+  .form::before {
+    top: -1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .heading {
+    font-size: var.$font-18;
+    letter-spacing: var.$letter-spacing-minus-0-25;
+  }
+
+  .labelHeading {
+    letter-spacing: var.$letter-spacing-minus-0-18;
+  }
+
+  .dropdownButton,
+  .dropdownMenu,
+  .labelHeading,
+  .labelText {
+    font-size: var.$font-13;
+  }
+
+  .formItem:last-of-type {
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  .button:nth-of-type(1) {
+    order: 1;
+  }
+
+  .button:nth-of-type(1),
+  .button:nth-of-type(2) {
+    width: 100%;
+    height: 2.5rem;
+  }
+}
