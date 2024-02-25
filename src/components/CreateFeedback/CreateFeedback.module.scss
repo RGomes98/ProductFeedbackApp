@@ -5,8 +5,8 @@
   width: 100%;
   gap: 4.25rem;
   display: flex;
+  margin-top: 4rem;
   max-width: 33.75rem;
-  margin-top: 2.125rem;
   margin-inline: 1.5rem;
   flex-direction: column;
 }
@@ -189,6 +189,7 @@
 @media (width <= var.$breakpoint-762) {
   .container {
     gap: 3.438rem;
+    margin-top: 2.125rem;
   }
 
   .form {
