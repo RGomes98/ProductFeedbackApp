@@ -6,6 +6,7 @@
   align-self: flex-start;
   position: relative;
   overflow: hidden;
+  cursor: initial;
 }
 
 .button {
@@ -19,6 +20,7 @@
   background-color: transparent;
 
   &[data-loading='true'] {
+    pointer-events: none;
     animation: UpvoteSkeleton var.$ms800 linear infinite alternate;
   }
 }
