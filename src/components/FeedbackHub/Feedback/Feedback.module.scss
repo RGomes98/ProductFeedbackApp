@@ -23,21 +23,23 @@
 @include mix.FadeInAnimation(container, var.$ease200ms);
 
 .wrapper {
+  min-width: 0;
   gap: 0.75rem;
   display: flex;
   flex-direction: column;
 }
 
 .contentWrapper {
-  gap: 0.25rem;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
 }
 
 .title {
   @include mix.H3;
   line-height: unset;
   -webkit-line-clamp: 1;
+  margin-bottom: 0.25rem;
   color: var.$marian-blue;
   transition: color var.$ease200ms;
 }
@@ -50,6 +52,7 @@
 .description {
   overflow: hidden;
   display: -webkit-box;
+  word-wrap: break-word;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
 }

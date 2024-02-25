@@ -2,10 +2,10 @@ import type { FilteredFeedbacks } from '@/helpers/queryAndSortProductFeedbacks';
 import { formatCategoryName } from '@/utils/formatCategoryName';
 import { UpvoteButton } from '../UpvoteButton/UpvoteButton';
 import { Comments } from '../Comments/Comments';
+import { auth } from '@/auth';
 
 import styles from './Feedback.module.scss';
 import Link from 'next/link';
-import { auth } from '@/auth';
 
 export const Feedback = async ({
   id,
@@ -24,8 +24,8 @@ export const Feedback = async ({
       <UpvoteButton {...{ id, upvotes, isUpvotedByUser }} />
       <div className={styles.wrapper}>
         <div className={styles.contentWrapper}>
-          <span className={styles.title}>{title}</span>
-          <span className={styles.description}>{description}</span>
+          <p className={styles.title}>{title}</p>
+          <p className={styles.description}>{description}</p>
         </div>
         <span className={styles.category}>{formatCategoryName(category)}</span>
       </div>
