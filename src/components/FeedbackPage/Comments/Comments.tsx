@@ -59,7 +59,7 @@ export const Comments = ({
           <p className={styles.comment}>{content}</p>
           {isCommentReplyActive && (
             <Fragment>
-              <form className={styles.form} action={formAction}>
+              <form className={styles.form} ref={formRef} action={formAction}>
                 <textarea
                   data-error={Boolean(formState.fieldErrors?.['content'])}
                   placeholder='Type your reply here'
@@ -87,7 +87,7 @@ export const Comments = ({
           </div>
           {isCommentReplyActive && (
             <div className={styles.desktopReply}>
-              <form className={styles.form} action={formAction}>
+              <form className={styles.form} ref={formRef} action={formAction}>
                 <textarea
                   data-error={Boolean(formState.fieldErrors?.['content'])}
                   placeholder='Type your reply here'

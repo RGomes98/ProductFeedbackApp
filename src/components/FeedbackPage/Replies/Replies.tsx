@@ -54,7 +54,7 @@ export const Replies = ({
         </p>
         {isCommentReplyActive && (
           <Fragment>
-            <form className={styles.form} action={formAction}>
+            <form className={styles.form} ref={formRef} action={formAction}>
               <textarea
                 data-error={Boolean(formState.fieldErrors?.['content'])}
                 placeholder='Type your reply here'
