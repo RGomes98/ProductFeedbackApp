@@ -23,7 +23,8 @@ export const UpvoteButton = ({
     <form className={styles.container} data-upvote={isUpvotedByUser} ref={formRef} action={formAction}>
       <ArrowUpIcon className={styles.icon} />
       <span className={styles.count}>{upvotes}</span>
-      <input hidden readOnly value={id} name='feedbackId' type='text' />
+      <input value={id} name='feedbackId' type='text' readOnly hidden />
+      <input value='/' name='path' type='text' readOnly hidden />
       <SubmitButton />
     </form>
   );
