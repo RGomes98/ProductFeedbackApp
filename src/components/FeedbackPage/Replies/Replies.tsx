@@ -21,7 +21,12 @@ export const Replies = ({
 
   const { formRef, formState, formAction } = useServerActionFormState({
     fieldValues: { content: '', repliedTo: '', commentId: '' },
-    onSuccessActions: [() => setIsCommentReplyActive(false)],
+    onSuccessActions: [
+      () => {
+        setIsCommentReplyActive(false);
+        formState.status.code = undefined;
+      },
+    ],
     serverAction: createFeedbackReplyAction,
   });
 
