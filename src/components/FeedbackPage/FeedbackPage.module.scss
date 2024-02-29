@@ -1,0 +1,71 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1.5rem;
+  display: flex;
+  max-width: 45.625rem;
+  margin-inline: 2.5rem;
+  flex-direction: column;
+  padding-block: 5rem 8.563rem;
+}
+
+.actionsWrapper {
+  gap: 1.5rem;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+}
+
+.feedbackActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feedbackActions > :first-child {
+  align-self: center;
+}
+
+.editFeedback {
+  text-decoration: none;
+  @include mix.DefaultButton(blue);
+}
+
+.feedbackComments {
+  gap: 1.75rem;
+  display: flex;
+  padding-inline: 2rem;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  padding-block: 1.5rem 3rem;
+  background-color: var.$white;
+}
+
+.commentsCount {
+  font-weight: var.$bold;
+  font-size: var.$font-18;
+  color: var.$marian-blue;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+.commentWrapper {
+}
+
+@media (width <= var.$breakpoint-1245) {
+  .container {
+    margin-inline: 1.5rem;
+    padding-block: 3.5rem 7.5rem;
+  }
+
+  .feedbackComments {
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    padding-block: 1.5rem 5.5rem;
+  }
+}

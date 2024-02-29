@@ -238,13 +238,13 @@
   height: 3rem;
   outline: none;
   width: 15.938rem;
-  padding-left: 1.5rem;
   border-radius: 0.313rem;
   color: var.$marian-blue;
   font-size: var.$font-15;
   font-weight: var.$regular;
   caret-color: var.$marian-blue;
   border: 1px solid transparent;
+  padding-inline: 1.5rem 0.5rem;
   background-color: var.$antiflash-white;
   transition: border-color var.$ease200ms;
 

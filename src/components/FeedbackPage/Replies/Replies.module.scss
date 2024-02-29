@@ -1,0 +1,144 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1rem;
+  display: flex;
+  margin-left: 0.25rem;
+  flex-direction: column;
+}
+
+.profileWrapper {
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.profilePicture {
+  border-radius: 50%;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: var.$bold;
+  font-size: var.$font-14;
+  color: var.$marian-blue;
+  letter-spacing: var.$letter-spacing-minus-0-18;
+}
+
+.username {
+  font-size: var.$font-14;
+}
+
+.replyButton {
+  cursor: pointer;
+  margin-left: auto;
+  border: transparent;
+  color: var.$savoy-blue;
+  font-size: var.$font-13;
+  text-decoration: underline;
+  font-weight: var.$semi-bold;
+  background-color: transparent;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var.$ease200ms;
+
+  &:hover {
+    text-decoration-color: var.$savoy-blue;
+  }
+}
+
+.replyWrapper {
+  display: flex;
+  margin-left: 2.5rem;
+  flex-direction: column;
+}
+
+.desktopError {
+  margin-left: 2rem;
+}
+
+.comment {
+  margin-left: 2rem;
+  max-width: 31.75rem;
+  word-wrap: break-word;
+  font-size: var.$font-15;
+}
+
+.variant {
+  color: var.$veronica;
+  font-weight: var.$bold;
+}
+
+.form {
+  gap: 1rem;
+  display: flex;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@include mix.FadeInAnimation(form, var.$ease200ms);
+
+.textArea {
+  @include mix.TextInput;
+  max-width: 28.813rem;
+  padding-block: 1rem;
+  resize: none;
+  height: 5rem;
+  width: 100%;
+}
+
+.button {
+  @include mix.DefaultButton(purple);
+}
+
+.mobileError {
+  display: none;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .profileWrapper {
+    gap: 1rem;
+  }
+
+  .desktopError {
+    display: none;
+  }
+
+  .mobileError {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+
+  .name,
+  .username,
+  .comment {
+    font-size: var.$font-13;
+  }
+
+  .container,
+  .replyWrapper,
+  .comment,
+  .form {
+    margin-left: initial;
+  }
+
+  .form {
+    gap: initial;
+    flex-direction: column;
+  }
+
+  .textArea {
+    max-width: initial;
+    font-size: var.$font-13;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,219 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var.$transparent-cool-gray-25;
+  }
+
+  &:not(:first-child) {
+    padding-top: 2rem;
+  }
+}
+
+.profileWrapper {
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.profilePicture {
+  border-radius: 50%;
+}
+
+.nameWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: var.$bold;
+  font-size: var.$font-14;
+  color: var.$marian-blue;
+  letter-spacing: var.$letter-spacing-minus-0-18;
+}
+
+.username {
+  font-size: var.$font-14;
+}
+
+.replyButton {
+  cursor: pointer;
+  margin-left: auto;
+  border: transparent;
+  color: var.$savoy-blue;
+  font-size: var.$font-13;
+  text-decoration: underline;
+  font-weight: var.$semi-bold;
+  background-color: transparent;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var.$ease200ms;
+
+  &:hover {
+    text-decoration-color: var.$savoy-blue;
+  }
+}
+
+.commentWrapper {
+  display: flex;
+}
+
+.barContainer {
+  height: 88%;
+  display: flex;
+  min-width: 2.5rem;
+  padding-top: 0.5rem;
+  justify-content: center;
+}
+
+.bar {
+  width: 1px;
+
+  &[data-hascomments='true'] {
+    background-color: var.$transparent-glaucous-10;
+  }
+}
+
+.replyWrapper {
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  margin-left: 2rem;
+  max-width: 34.563rem;
+  word-wrap: break-word;
+  font-size: var.$font-15;
+}
+
+.form {
+  gap: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@include mix.FadeInAnimation(form, var.$ease200ms);
+
+.textArea {
+  @include mix.TextInput;
+  max-width: 28.813rem;
+  padding-block: 1rem;
+  resize: none;
+  height: 5rem;
+  width: 100%;
+}
+
+.button {
+  @include mix.DefaultButton(purple);
+}
+
+.replies {
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.desktopReply {
+  margin-left: 2rem;
+}
+
+.mobileContent,
+.mobileBar,
+.mobileError {
+  display: none;
+}
+
+@media (width <= var.$breakpoint-762) {
+  .profileWrapper {
+    gap: 1rem;
+  }
+
+  .mobileError {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    &:not(:last-child) {
+      padding-bottom: 1.5rem;
+    }
+
+    &:not(:first-child) {
+      padding-top: 1.5rem;
+    }
+  }
+
+  .mobileContent,
+  .mobileBar {
+    display: flex;
+  }
+
+  .barContainer {
+    min-width: initial;
+    padding-right: 1.5rem;
+  }
+
+  .form,
+  .comment {
+    margin-left: initial;
+  }
+
+  .form {
+    gap: initial;
+    flex-direction: column;
+  }
+
+  .textArea {
+    max-width: initial;
+    font-size: var.$font-13;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .mobileContent {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .desktopContent,
+  .desktopBar,
+  .desktopReply,
+  .desktopError {
+    display: none;
+  }
+
+  .replyWrapper {
+    gap: initial;
+    flex-direction: row;
+  }
+
+  .name,
+  .username,
+  .comment {
+    font-size: var.$font-13;
+  }
+
+  .commentWrapper {
+    gap: 1.5rem;
+    flex-direction: column;
+
+    &[data-hascomments='false'] {
+      gap: 0;
+    }
+  }
+
+  .replies {
+    gap: 1.5rem;
+  }
+}

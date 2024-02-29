@@ -1,0 +1,34 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.buttonText {
+  opacity: 1;
+
+  &[data-loading='true'] {
+    opacity: 0;
+  }
+}
+
+.spinner {
+  opacity: 0;
+  position: absolute;
+
+  path {
+    fill: var.$white;
+  }
+
+  &[data-loading='true'] {
+    opacity: 1;
+  }
+}
+
+.buttonText,
+.spinner {
+  transition: opacity var.$ease200ms;
+}
+
+.button {
+  &[data-loading='true'] {
+    pointer-events: none;
+  }
+}

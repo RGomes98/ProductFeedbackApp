@@ -1,0 +1,71 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1rem;
+  display: flex;
+  padding-inline: 2rem;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  padding-block: 1.5rem 2rem;
+  background-color: var.$white;
+}
+
+.heading {
+  font-weight: var.$bold;
+  color: var.$marian-blue;
+  font-size: var.$font-18;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+.form {
+}
+
+.textarea {
+  @include mix.TextInput;
+  padding-block: 1rem;
+  margin-top: 0.5rem;
+  resize: none;
+  height: 5rem;
+  width: 100%;
+
+  &[data-limit='true'] {
+    border-color: var.$poppy;
+  }
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count {
+  &[data-limit='true'] {
+    color: var.$poppy;
+  }
+}
+
+.button {
+  @include mix.DefaultButton(purple);
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    padding-block: 1.5rem;
+    padding-inline: 1.5rem;
+  }
+
+  .count {
+    font-size: var.$font-13;
+  }
+
+  .textarea {
+    font-size: var.$font-13;
+  }
+
+  .button {
+    max-width: 7.5rem;
+  }
+}
