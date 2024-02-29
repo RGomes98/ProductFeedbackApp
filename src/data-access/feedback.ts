@@ -25,7 +25,11 @@ export const filterFeedback = async (orderByFilter: OrderByFilter, categoryFilte
   return await prisma.productFeedback.findMany({
     orderBy: orderByFilter,
     where: { category: categoryFilter, status: 'SUGGESTION' },
-    include: { _count: { select: { comments: true } }, Upvote: true },
+    include: {
+      Upvote: true,
+      _count: { select: { comments: true } },
+      comments: { select: { _count: { select: { replies: true } } } },
+    },
   });
 };
 
@@ -34,7 +38,16 @@ export const getFeedbackStatusesCount = async () => {
 };
 
 export const getFeedback = async (feedbackId: number) => {
-  const feedback = await prisma.productFeedback.findFirst({ where: { id: feedbackId } });
+  const feedback = await prisma.productFeedback.findFirst({
+    where: { id: feedbackId },
+    include: {
+      Upvote: true,
+      _count: { select: { comments: true } },
+      comments: { select: { _count: { select: { replies: true } } } },
+    },
+  });
+
   if (!feedback) throw new Error('feedback not found');
+
   return feedback;
 };
