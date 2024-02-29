@@ -107,7 +107,7 @@ export const Comments = ({
           {replies.length > 0 && (
             <div className={styles.replies}>
               {replies.map((reply) => (
-                <Replies key={reply.id} {...{ ...reply, id }} />
+                <Replies key={reply.id} {...{ ...reply, id, feedbackId }} />
               ))}
             </div>
           )}

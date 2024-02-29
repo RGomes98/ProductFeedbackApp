@@ -10,7 +10,13 @@ import { Fragment, useState } from 'react';
 import styles from './Replies.module.scss';
 import Image from 'next/image';
 
-export const Replies = ({ id, user, repliedTo, content }: FeedbackReplies) => {
+export const Replies = ({
+  id,
+  user,
+  repliedTo,
+  content,
+  feedbackId,
+}: FeedbackReplies & { feedbackId: number }) => {
   const [isCommentReplyActive, setIsCommentReplyActive] = useState(false);
 
   const { formRef, formState, formAction } = useServerActionFormState({
@@ -51,6 +57,7 @@ export const Replies = ({ id, user, repliedTo, content }: FeedbackReplies) => {
                 name='content'
               />
               <input name='commentId' type='text' value={id} hidden readOnly />
+              <input name='path' type='text' value={`/feedback/${feedbackId}`} hidden readOnly />
               <input name='repliedTo' type='text' value={String(user.username)} hidden readOnly />
               <div className={styles.mobileError}>
                 {formState.fieldErrors && <Error error={formState.fieldErrors['content']} />}
