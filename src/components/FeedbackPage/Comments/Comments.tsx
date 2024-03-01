@@ -22,12 +22,7 @@ export const Comments = ({
 
   const { formRef, formState, formAction } = useServerActionFormState({
     fieldValues: { path: '', content: '', repliedTo: '', commentId: '' },
-    onSuccessActions: [
-      () => {
-        setIsCommentReplyActive(false);
-        formState.status.code = undefined;
-      },
-    ],
+    onSuccessActions: [() => setIsCommentReplyActive(false)],
     serverAction: createFeedbackReplyAction,
   });
 
@@ -103,18 +98,18 @@ export const Comments = ({
             </div>
           )}
           {replies.length > 0 && (
-            <div className={styles.mobileBar}>
-              <div className={styles.barContainer}>
-                <span className={styles.bar} data-hascomments={replies.length > 0} />
+            <Fragment>
+              <div className={styles.mobileBar}>
+                <div className={styles.barContainer}>
+                  <span className={styles.bar} data-hascomments={replies.length > 0} />
+                </div>
               </div>
-            </div>
-          )}
-          {replies.length > 0 && (
-            <div className={styles.replies}>
-              {replies.map((reply) => (
-                <Replies key={reply.id} {...{ ...reply, id, feedbackId }} />
-              ))}
-            </div>
+              <div className={styles.replies}>
+                {replies.map((reply) => (
+                  <Replies key={reply.id} {...{ ...reply, id, feedbackId }} />
+                ))}
+              </div>
+            </Fragment>
           )}
         </div>
       </div>

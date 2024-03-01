@@ -11,12 +11,7 @@ import styles from './CreateComment.module.scss';
 export const CreateComment = ({ feedbackId }: { feedbackId: number }) => {
   const { formRef, formState, formAction } = useServerActionFormState({
     fieldValues: { path: '', content: '', feedbackId: '' },
-    onSuccessActions: [
-      () => {
-        setInputCount(0);
-        formState.status.code = undefined;
-      },
-    ],
+    onSuccessActions: [() => setInputCount(0)],
     serverAction: createFeedbackCommentAction,
   });
 

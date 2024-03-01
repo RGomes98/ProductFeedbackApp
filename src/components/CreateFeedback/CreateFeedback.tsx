@@ -22,8 +22,8 @@ export const CreateFeedback = () => {
   const { push } = useRouter();
 
   const { formRef, formState, formAction } = useServerActionFormState({
-    onSuccessActions: [() => setSelectedDropdownOption('Feature'), () => push('/')],
-    fieldValues: { title: '', category: '', description: '', path: '/' },
+    fieldValues: { path: '', title: '', category: '', description: '' },
+    onSuccessActions: [() => push('/')],
     serverAction: createFeedbackAction,
   });
 
@@ -104,6 +104,7 @@ export const CreateFeedback = () => {
             <Error error={formState.fieldErrors?.['description']} />
           </li>
           <li className={styles.formItem}>
+            <input name='path' type='text' value='/' hidden readOnly />
             <button className={styles.button} onClick={() => push('/')} type='button'>
               Cancel
             </button>
