@@ -15,7 +15,7 @@ export const UpvoteButton = ({
   isUpvotedByUser,
 }: Pick<ProductFeedback, 'id' | 'upvotes'> & { isUpvotedByUser: boolean }) => {
   const { formRef, formState, formAction } = useServerActionFormState({
-    fieldValues: { path: '/', feedbackId: '' },
+    fieldValues: { path: '', feedbackId: '' },
     serverAction: updateFeedbackUpvoteAction,
   });
 

@@ -1,6 +1,7 @@
+import type { FilteredFeedbacks } from '@/helpers/queryAndSortProductFeedbacks';
 import { CommentIcon } from '@/components/Icons/CommentIcon';
+
 import styles from './Comments.module.scss';
-import { FilteredFeedbacks } from '@/helpers/queryAndSortProductFeedbacks';
 
 export const Comments = ({ _count }: Pick<FilteredFeedbacks, '_count'>) => {
   return (
