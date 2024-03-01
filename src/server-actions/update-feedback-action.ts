@@ -13,7 +13,7 @@ import {
 } from '@/utils/serverActionsResponses';
 
 export const updateFeedbackAction = async (formState: FormState, formData: FormData): Promise<FormState> => {
-  const fields = new Set(['category', 'title', 'status', 'description', 'feedbackId']);
+  const fields = new Set(['path', 'category', 'title', 'status', 'description', 'feedbackId']);
   const feedback = feedbackUpdateSchema.safeParse(Object.fromEntries(formData));
   const userId = (await auth())?.user?.id;
 

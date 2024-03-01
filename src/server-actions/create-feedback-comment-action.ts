@@ -1,14 +1,18 @@
 'use server';
 
-import { invalidFieldsErrorResponse, resolveHTTPResponse } from '@/utils/serverActionsResponses';
 import { feedbackCommentSchema } from '@/lib/schemas/feedback-comment-schema';
 import type { FormState } from '@/hooks/useServerActionFormState';
 import { createFeedbackComment } from '@/data-access/comment';
 import { assertIsError } from '@/utils/assertIsError';
 import { getFeedback } from '@/data-access/feedback';
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
+
+import {
+  authenticationErrorResponse,
+  invalidFieldsErrorResponse,
+  resolveHTTPResponse,
+} from '@/utils/serverActionsResponses';
 
 export const createFeedbackCommentAction = async (
   formState: FormState,
@@ -18,7 +22,7 @@ export const createFeedbackCommentAction = async (
   const fields = new Set(['path', 'content', 'feedbackId']);
   const userId = (await auth())?.user?.id;
 
-  if (!userId) redirect('/login');
+  if (!userId) return authenticationErrorResponse(fields);
 
   if (!feedbackComment.success) return invalidFieldsErrorResponse(formData, feedbackComment.error, fields);
 
