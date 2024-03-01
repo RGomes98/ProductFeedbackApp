@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
+  const sortByMessage = suggestionsCount > 1 ? 'Suggestions' : 'Suggestion';
   const [isSortByMenuActive, setIsSortByMenuActive] = useState(false);
   const searchParams = useSearchParams();
 
@@ -49,7 +50,9 @@ export const SortBy = ({ suggestionsCount }: { suggestionsCount: number }) => {
             width={24}
             height={24}
           />
-          <span className={styles.suggestionsCount}>{suggestionsCount} Suggestions</span>
+          <span className={styles.suggestionsCount}>
+            {suggestionsCount} {sortByMessage}
+          </span>
         </div>
         <button className={styles.dropdownButton} onClick={() => setIsSortByMenuActive((prev) => !prev)}>
           <span className={styles.sortBy}>
