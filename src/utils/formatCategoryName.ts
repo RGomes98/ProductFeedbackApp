@@ -1,6 +1,4 @@
-import { Category } from '@/components/UpdateFeedback/UpdateFeedback';
-
-export const formatCategoryName = (category: Category) => {
+export const formatCategoryName = (category: string) => {
   switch (category) {
     case 'BUG':
       return 'Bug';
@@ -12,5 +10,7 @@ export const formatCategoryName = (category: Category) => {
       return 'UI';
     case 'UX':
       return 'UX';
+    default:
+      return 'All';
   }
 };
