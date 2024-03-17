@@ -7,6 +7,7 @@ import { queryComments } from '@/helpers/queryComments';
 import { BackButton } from '../BackButton/BackButton';
 import { Comments } from './Comments/Comments';
 import { Fragment } from 'react';
+import { auth } from '@/auth';
 
 import styles from './FeedbackPage.module.scss';
 import Link from 'next/link';
@@ -14,15 +15,18 @@ import Link from 'next/link';
 export const FeedbackPage = async (feedback: SelectedFeedback) => {
   const comments = await queryComments(feedback.id);
   const countMessage = getFeedbackTotalComments(feedback) > 1 ? 'Comments' : 'Comment';
+  const userId = (await auth())?.user?.id;
 
   return (
     <div className={styles.container}>
       <div className={styles.actionsWrapper}>
         <div className={styles.feedbackActions}>
           <BackButton />
-          <Link className={styles.editFeedback} href='#'>
-            Edit Feedback
-          </Link>
+          {userId && feedback.userId === userId && (
+            <Link className={styles.editFeedback} href={`/update/${feedback.id}`}>
+              Edit Feedback
+            </Link>
+          )}
         </div>
         <Feedback {...feedback} />
       </div>

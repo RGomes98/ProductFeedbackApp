@@ -2,6 +2,7 @@ import { Category, Status } from '@prisma/client';
 import { z } from 'zod';
 
 export const feedbackUpdateSchema = z.object({
+  path: z.string(),
   feedbackId: z.coerce.number().int().positive(),
   title: z.string().trim().min(1, { message: 'Can`t be empty' }),
   status: z.nativeEnum(Status, { errorMap: () => ({ message: 'Invalid status' }) }),

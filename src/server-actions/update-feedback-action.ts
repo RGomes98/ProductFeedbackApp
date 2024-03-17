@@ -4,6 +4,7 @@ import { feedbackUpdateSchema } from '@/lib/schemas/feedback-update-schema';
 import { getFeedback, updateFeedback } from '@/data-access/feedback';
 import type { FormState } from '@/hooks/useServerActionFormState';
 import { assertIsError } from '@/utils/assertIsError';
+import { revalidatePath } from 'next/cache';
 import { auth } from '@/auth';
 
 import {
@@ -25,6 +26,7 @@ export const updateFeedbackAction = async (formState: FormState, formData: FormD
     const feedbackToUpdate = await getFeedback(feedback.data.feedbackId);
     await updateFeedback(userId, { ...feedback.data, feedbackId: feedbackToUpdate.id });
 
+    revalidatePath(feedback.data.path);
     return resolveHTTPResponse('OK', 'feedback successfully updated', fields);
   } catch (error) {
     assertIsError(error);

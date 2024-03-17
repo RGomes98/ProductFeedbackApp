@@ -8,8 +8,12 @@ export const createFeedback = async (userId: string, feedback: Feedback) => {
   await prisma.productFeedback.create({ data: { userId, ...dataToCreate } });
 };
 
+export const deleteFeedback = async (userId: string, feedbackId: number) => {
+  await prisma.productFeedback.delete({ where: { userId: userId, id: feedbackId } });
+};
+
 export const updateFeedback = async (userId: string, feedback: FeedbackUpdate) => {
-  const { feedbackId, ...dataToUpdate } = feedback;
+  const { path, feedbackId, ...dataToUpdate } = feedback;
   await prisma.productFeedback.update({ where: { userId, id: feedbackId }, data: dataToUpdate });
 };
 
