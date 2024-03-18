@@ -1,6 +1,4 @@
-import { Status } from '@/components/UpdateFeedback/UpdateFeedback';
-
-export const formatStatusName = (status: Status) => {
+export const formatStatusName = (status: string) => {
   switch (status) {
     case 'IN_PROGRESS':
       return 'In-Progress';
