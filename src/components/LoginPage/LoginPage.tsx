@@ -6,9 +6,9 @@ import { GoogleIcon } from '../Icons/GoogleIcon';
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
 
-import styles from './Login.module.scss';
+import styles from './LoginPage.module.scss';
 
-export const Login = async () => {
+export const LoginPage = async () => {
   const session = await auth();
   if (session) redirect('/');
 
