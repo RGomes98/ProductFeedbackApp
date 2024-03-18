@@ -10,13 +10,13 @@ import { useFormStatus } from 'react-dom';
 import { Error } from '../Error/Error';
 import { useState } from 'react';
 
-import styles from './CreateFeedback.module.scss';
+import styles from './CreateFeedbackPage.module.scss';
 
 const options = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'] as const;
 
 type Options = (typeof options)[number];
 
-export const CreateFeedback = () => {
+export const CreateFeedbackPage = () => {
   const [selectedDropdownOption, setSelectedDropdownOption] = useState<Options>('Feature');
   const [isDropdownActive, setIsDropdownActive] = useState(false);
   const { push } = useRouter();
