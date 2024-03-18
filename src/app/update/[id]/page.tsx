@@ -1,4 +1,4 @@
-import { UpdateFeedback } from '@/components/UpdateFeedback/UpdateFeedback';
+import { UpdateFeedbackPage } from '@/components/UpdateFeedbackPage/UpdateFeedbackPage';
 import { queryFeedback } from '@/helpers/queryFeedback';
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
@@ -9,5 +9,5 @@ export default async function Page({ params: { id } }: { params: { id: string } 
 
   if (!userId || feedback.userId !== userId) redirect('/');
 
-  return <UpdateFeedback feedback={feedback} />;
+  return <UpdateFeedbackPage feedback={feedback} />;
 }

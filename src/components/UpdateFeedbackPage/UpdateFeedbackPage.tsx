@@ -22,7 +22,7 @@ const categories = ['FEATURE', 'UI', 'UX', 'ENHANCEMENT', 'BUG'] as const;
 export type Category = (typeof categories)[number];
 export type Status = (typeof statuses)[number];
 
-export const UpdateFeedback = ({ feedback }: { feedback: SelectedFeedback }) => {
+export const UpdateFeedbackPage = ({ feedback }: { feedback: SelectedFeedback }) => {
   const [selectedDropdownOption, setSelectedDropdownOption] = useState<Category>(feedback.category);
   const [selectedStatusOption, setSelectedStatusOption] = useState<Status>(feedback.status);
   const [isStatusDropdownActive, setIsStatusDropdownActive] = useState(false);
@@ -131,8 +131,8 @@ export const UpdateFeedback = ({ feedback }: { feedback: SelectedFeedback }) => 
                     {statuses.map((option) => {
                       const handleOptionClick = (event: React.MouseEvent<HTMLLIElement>) => {
                         event.stopPropagation();
-                        setIsDropdownActive(false);
                         setSelectedStatusOption(option);
+                        setIsStatusDropdownActive(false);
                       };
 
                       return (
