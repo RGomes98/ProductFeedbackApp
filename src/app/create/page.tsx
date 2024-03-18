@@ -4,7 +4,6 @@ import { auth } from '@/auth';
 
 export default async function Page() {
   const userId = (await auth())?.user?.id;
-  if (!userId) redirect('/');
-
+  if (!userId) redirect('/login');
   return <CreateFeedbackPage />;
 }

@@ -6,8 +6,6 @@ import { auth } from '@/auth';
 export default async function Page({ params: { id } }: { params: { id: string } }) {
   const feedback = await queryFeedback(id);
   const userId = (await auth())?.user?.id;
-
-  if (!userId || feedback.userId !== userId) redirect('/');
-
+  if (!userId || feedback.userId !== userId) redirect('/login');
   return <UpdateFeedbackPage feedback={feedback} />;
 }
