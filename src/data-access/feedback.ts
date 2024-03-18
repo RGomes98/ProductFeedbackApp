@@ -1,4 +1,5 @@
 import type { CategoryFilter, OrderByFilter } from '@/helpers/queryAndSortProductFeedbacks';
+import { Status } from '@/components/UpdateFeedbackPage/UpdateFeedbackPage';
 import type { FeedbackUpdate } from '@/lib/schemas/feedback-update-schema';
 import type { Feedback } from '@/lib/schemas/feedback-schema';
 import { prisma } from '@/lib/prisma';
@@ -29,6 +30,30 @@ export const filterFeedback = async (orderByFilter: OrderByFilter, categoryFilte
   return await prisma.productFeedback.findMany({
     orderBy: orderByFilter,
     where: { category: categoryFilter, status: 'SUGGESTION' },
+    include: {
+      Upvote: true,
+      _count: { select: { comments: true } },
+      comments: { select: { _count: { select: { replies: true } } } },
+    },
+  });
+};
+
+export const getFeedbackByStatus = async (status: Status) => {
+  return await prisma.productFeedback.findMany({
+    where: { status: status },
+    orderBy: { upvotes: 'asc' },
+    include: {
+      Upvote: true,
+      _count: { select: { comments: true } },
+      comments: { select: { _count: { select: { replies: true } } } },
+    },
+  });
+};
+
+export const getFeedbacks = async () => {
+  return await prisma.productFeedback.findMany({
+    orderBy: { status: 'asc' },
+    where: { status: { not: 'SUGGESTION' } },
     include: {
       Upvote: true,
       _count: { select: { comments: true } },

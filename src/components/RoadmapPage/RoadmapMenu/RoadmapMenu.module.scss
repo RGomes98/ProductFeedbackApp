@@ -1,0 +1,67 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  z-index: 50;
+  width: 100%;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding-block: 1.688rem;
+  border-radius: 0.625rem;
+  padding-inline: 2rem 2.5rem;
+  justify-content: space-between;
+  background-color: var.$delft-blue;
+}
+
+.headingWrapper {
+  gap: 0.25rem;
+  display: flex;
+  color: var.$white;
+  flex-direction: column;
+
+  button {
+    color: var.$white;
+  }
+
+  svg {
+    path {
+      stroke: var.$lavender-web;
+    }
+  }
+}
+
+.heading {
+  font-weight: var.$bold;
+  font-size: var.$font-24;
+  letter-spacing: var.$letter-spacing-minus-0-33;
+}
+
+.addWrapper {
+}
+
+.link {
+  text-decoration: none;
+  @include mix.DefaultButton(purple);
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    left: 0;
+    position: fixed;
+    border-radius: initial;
+    padding-inline: 1.5rem;
+    padding-block: 1.625rem;
+  }
+
+  .headingWrapper {
+    button {
+      font-size: var.$font-13;
+    }
+  }
+
+  .heading {
+    font-size: var.$font-18;
+    letter-spacing: var.$letter-spacing-minus-0-25;
+  }
+}

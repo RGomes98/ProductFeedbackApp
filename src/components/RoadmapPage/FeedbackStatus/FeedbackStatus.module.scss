@@ -1,0 +1,32 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  color: var.$glaucous;
+  font-size: var.$font-13;
+  font-weight: var.$regular;
+}
+
+.circle {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.PLANNED {
+  background-color: var.$atomic-tangerine;
+}
+
+.IN_PROGRESS {
+  background-color: var.$veronica;
+}
+
+.LIVE {
+  background-color: var.$maya-blue;
+}

@@ -1,0 +1,25 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-block: 4.875rem 11.188rem;
+}
+
+@include mix.ContainerStandardPadding('.container', inline);
+
+@media (width <= var.$breakpoint-1245) {
+  .container {
+    gap: 2rem;
+    margin-block: 3.5rem 5.938rem;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    margin-block: 0rem 6.125rem;
+  }
+}

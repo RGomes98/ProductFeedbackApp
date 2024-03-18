@@ -10,7 +10,7 @@ export const Statuses = async () => {
     <div className={styles.container}>
       <div className={styles.headingWrapper}>
         <span className={styles.heading}>Roadmap</span>
-        <Link className={styles.link} href='#'>
+        <Link className={styles.link} href='/roadmap'>
           View
         </Link>
       </div>

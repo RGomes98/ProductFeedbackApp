@@ -1,0 +1,55 @@
+@use '@/stylesheets/variables' as var;
+@use '@/stylesheets/mixins' as mix;
+
+.container {
+  gap: 1.875rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.column {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusHeadingWrapper {
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusHeading {
+  font-weight: var.$bold;
+  color: var.$marian-blue;
+  font-size: var.$font-18;
+  letter-spacing: var.$letter-spacing-minus-0-25;
+}
+
+.description {
+}
+
+@media (width <= var.$breakpoint-1245) {
+  .column {
+    gap: 1.5rem;
+  }
+
+  .container {
+    gap: 2rem;
+  }
+
+  .statusHeading,
+  .description {
+    font-size: var.$font-14;
+  }
+}
+
+@media (width <= var.$breakpoint-762) {
+  .container {
+    margin-block: 0rem 6.125rem;
+  }
+
+  .container {
+    display: none;
+  }
+}
