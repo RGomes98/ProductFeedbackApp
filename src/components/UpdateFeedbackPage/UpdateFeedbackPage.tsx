@@ -14,7 +14,7 @@ import { useFormStatus } from 'react-dom';
 import { Error } from '../Error/Error';
 import { useState } from 'react';
 
-import styles from './UpdateFeedback.module.scss';
+import styles from './UpdateFeedbackPage.module.scss';
 
 const statuses = ['SUGGESTION', 'PLANNED', 'IN_PROGRESS', 'LIVE'] as const;
 const categories = ['FEATURE', 'UI', 'UX', 'ENHANCEMENT', 'BUG'] as const;
