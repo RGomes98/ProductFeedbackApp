@@ -8,9 +8,10 @@
   display: none;
   top: 6.375rem;
   height: 3.75rem;
+  position: fixed;
   list-style: none;
-  position: absolute;
   align-items: center;
+  background-color: var.$antiflash-white;
   border-bottom: 1px solid var.$transparent-cool-gray-25;
 }
 
