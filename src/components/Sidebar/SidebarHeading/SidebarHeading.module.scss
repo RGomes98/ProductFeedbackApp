@@ -54,6 +54,10 @@
     background-image: url('/assets/backgrounds/background-header-mobile.png');
   }
 
+  .headingWrapper {
+    gap: initial;
+  }
+
   .heading {
     font-size: var.$font-15;
   }
