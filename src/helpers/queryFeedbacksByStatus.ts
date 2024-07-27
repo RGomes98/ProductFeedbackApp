@@ -1,5 +1,6 @@
 import type { FilteredFeedbacks } from './queryAndSortProductFeedbacks';
 import { getFeedbacks } from '@/data-access/feedback';
+import { redirect } from 'next/navigation';
 
 export type FeedbacksByStatus = Record<string, FilteredFeedbacks[]>;
 
@@ -12,6 +13,6 @@ export const queryFeedbacksByStatus = async () => {
       return obj;
     }, {});
   } catch (error) {
-    return [];
+    redirect('/');
   }
 };

@@ -20,21 +20,21 @@ export const Statuses = async () => {
             <div className={styles.statusColor} />
             <span className={styles.status}>Planned</span>
           </div>
-          <span className={styles.count}>{statuses.PLANNED ?? 0}</span>
+          <span className={styles.count}>{statuses?.PLANNED ?? 0}</span>
         </li>
         <li className={styles.statusItem}>
           <div className={styles.statusWrapper}>
             <div className={styles.statusColor} />
             <span className={styles.status}>In-Progress</span>
           </div>
-          <span className={styles.count}>{statuses.IN_PROGRESS ?? 0}</span>
+          <span className={styles.count}>{statuses?.IN_PROGRESS ?? 0}</span>
         </li>
         <li className={styles.statusItem}>
           <div className={styles.statusWrapper}>
             <div className={styles.statusColor} />
             <span className={styles.status}>Live</span>
           </div>
-          <span className={styles.count}>{statuses.LIVE ?? 0}</span>
+          <span className={styles.count}>{statuses?.LIVE ?? 0}</span>
         </li>
       </ul>
     </div>
